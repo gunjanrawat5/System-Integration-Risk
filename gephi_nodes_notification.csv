@@ -1,0 +1,11 @@
+Id,Label,node,system_id,in_degree,out_degree,degree,betweenness,closeness,eigenvector,pagerank,downstream_count,upstream_count,is_articulation,importance_score,risk_label
+API Gateway (notifications admin),API Gateway (notifications admin),API Gateway (notifications admin),notification_service_01,0,3,3,0.0,0.0,0.0,0.0324201464241273,9,0,False,0.4333333333333333,high
+Lambda (notification dispatcher),Lambda (notification dispatcher),Lambda (notification dispatcher),notification_service_01,6,8,14,0.5694444444444444,0.6666666666666666,0.0,0.3413336788759506,8,6,True,1.3555555555555556,high
+SNS (notifications topic),SNS (notifications topic),SNS (notifications topic),notification_service_01,1,1,2,0.0,0.3636363636363636,0.0,0.0686863500101917,8,6,False,0.3555555555555555,high
+SQS (email queue),SQS (email queue),SQS (email queue),notification_service_01,1,1,2,0.0,0.3636363636363636,0.0,0.0686863500101917,8,6,False,0.3555555555555555,high
+SES (email service),SES (email service),SES (email service),notification_service_01,1,1,2,0.0,0.4188034188034188,0.0,0.0686863500101917,1,7,False,0.0444444444444444,low
+DynamoDB (user preferences),DynamoDB (user preferences),DynamoDB (user preferences),notification_service_01,1,1,2,0.0,0.3636363636363636,0.0,0.0686863500101917,8,6,False,0.3555555555555555,high
+S3 (templates),S3 (templates),S3 (templates),notification_service_01,1,1,2,0.0,0.3636363636363636,0.0,0.0686863500101917,8,6,False,0.3555555555555555,high
+CloudWatch,CloudWatch,CloudWatch,notification_service_01,2,1,3,0.0,0.3999999999999999,0.0,0.0778720390569765,8,6,False,0.3888888888888889,high
+IAM,IAM,IAM,notification_service_01,2,0,2,0.0,0.4537037037037037,0.0,0.0778720390569765,0,7,False,0.0,low
+VPC (main),VPC (main),VPC (main),notification_service_01,2,0,2,0.0,0.5079365079365079,0.0,0.1270703465350104,0,8,False,0.0,low

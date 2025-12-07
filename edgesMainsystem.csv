@@ -1,0 +1,130 @@
+source,target,relation
+Route 53,CloudFront (web/app CDN),unidirectional
+Route 53,CloudFront (video CDN),unidirectional
+CloudFront (web/app CDN),AWS WAF,unidirectional
+AWS WAF,ALB (web),unidirectional
+CloudFront (video CDN),ALB (API),unidirectional
+ALB (web),ECS Service (web frontend),unidirectional
+ALB (API),API Gateway (public API),unidirectional
+API Gateway (public API),ECS Service (auth service),unidirectional
+API Gateway (public API),ECS Service (user profile service),unidirectional
+API Gateway (public API),ECS Service (catalog service),unidirectional
+API Gateway (public API),ECS Service (search service),unidirectional
+API Gateway (public API),ECS Service (recommendation service),unidirectional
+API Gateway (public API),ECS Service (playback session service),unidirectional
+API Gateway (public API),ECS Service (billing service),unidirectional
+API Gateway (public API),ECS Service (subscription service),unidirectional
+API Gateway (public API),ECS Service (notification service),unidirectional
+API Gateway (public API),ECS Service (download service),unidirectional
+ECS Service (auth service),Cognito (user pool),unidirectional
+Cognito (user pool),RDS (user accounts DB),unidirectional
+ECS Service (auth service),DynamoDB (session store),unidirectional
+ECS Service (auth service),Redis (session cache),unidirectional
+ECS Service (user profile service),RDS (user accounts DB),unidirectional
+ECS Service (user profile service),DynamoDB (session store),unidirectional
+ECS Service (user profile service),Redis (session cache),unidirectional
+ECS Service (catalog service),Aurora (catalog DB),unidirectional
+ECS Service (catalog service),OpenSearch (search index),unidirectional
+ECS Service (search service),OpenSearch (search index),unidirectional
+ECS Service (search service),Redis (web cache),unidirectional
+ECS Service (recommendation service),SageMaker Endpoint (reco model),unidirectional
+ECS Service (recommendation service),S3 (feature store),unidirectional
+ECS Service (recommendation service),DynamoDB (user features),unidirectional
+ECS Service (experiment service),Redshift (analytics warehouse),unidirectional
+Redshift (analytics warehouse),ECS Service (experiment service),unidirectional
+ECS Service (experiment service),ECS Service (recommendation service),unidirectional
+ECS Service (playback session service),DynamoDB (playback state),unidirectional
+ECS Service (playback session service),DynamoDB (session store),unidirectional
+ECS Service (streaming control service),DynamoDB (playback state),unidirectional
+ECS Service (streaming control service),S3 (encoded assets),unidirectional
+ECS Service (download service),S3 (encoded assets),unidirectional
+ECS Service (download service),S3 (thumbnails),unidirectional
+CloudFront (video CDN),S3 (encoded assets),unidirectional
+CloudFront (web/app CDN),S3 (thumbnails),unidirectional
+ECS Service (device registry service),DynamoDB (device registry),unidirectional
+ECS Service (device registry service),DynamoDB (session store),unidirectional
+ECS Service (billing service),RDS (billing DB),unidirectional
+ECS Service (billing service),SNS (user notifications),unidirectional
+ECS Service (subscription service),RDS (billing DB),unidirectional
+ECS Service (subscription service),SNS (user notifications),unidirectional
+ECS Service (notification service),SNS (user notifications),unidirectional
+SNS (user notifications),SQS (email jobs queue),unidirectional
+SNS (user notifications),SQS (webhook events queue),unidirectional
+SQS (email jobs queue),ECS Service (notification service),unidirectional
+SQS (webhook events queue),ECS Service (notification service),unidirectional
+S3 (raw uploads),MediaConvert (transcoder),unidirectional
+MediaConvert (transcoder),S3 (encoded assets),unidirectional
+MediaConvert (transcoder),S3 (thumbnails),unidirectional
+ECS Service (encoding orchestrator),SQS (encoding jobs queue),unidirectional
+SQS (encoding jobs queue),EC2 Auto Scaling Group (encoding workers),unidirectional
+EC2 Auto Scaling Group (encoding workers),S3 (raw uploads),unidirectional
+EC2 Auto Scaling Group (encoding workers),S3 (encoded assets),unidirectional
+ECS Service (web frontend),Kinesis (clickstream stream),unidirectional
+ECS Service (playback session service),Kinesis (playback events stream),unidirectional
+CloudFront (video CDN),Kinesis (playback events stream),unidirectional
+Kinesis (clickstream stream),MSK / Kafka Cluster (event bus),unidirectional
+Kinesis (playback events stream),MSK / Kafka Cluster (event bus),unidirectional
+MSK / Kafka Cluster (event bus),Lambda (event enricher),unidirectional
+Lambda (event enricher),S3 (analytics raw),unidirectional
+Lambda (event enricher),S3 (analytics curated),unidirectional
+Lambda (event enricher),Redshift (analytics warehouse),unidirectional
+Lambda (event enricher),DynamoDB (user features),unidirectional
+S3 (analytics raw),Glue Data Catalog,unidirectional
+S3 (analytics curated),Glue Data Catalog,unidirectional
+Glue Data Catalog,Athena (ad hoc queries),unidirectional
+Glue Data Catalog,Redshift (analytics warehouse),unidirectional
+ECS Service (web frontend),Redis (web cache),unidirectional
+ECS Service (auth service),Redis (session cache),unidirectional
+ECS Service (user profile service),Redis (session cache),unidirectional
+ECS Service (web frontend),CloudWatch,unidirectional
+ECS Service (auth service),CloudWatch,unidirectional
+ECS Service (user profile service),CloudWatch,unidirectional
+ECS Service (catalog service),CloudWatch,unidirectional
+ECS Service (search service),CloudWatch,unidirectional
+ECS Service (recommendation service),CloudWatch,unidirectional
+ECS Service (playback session service),CloudWatch,unidirectional
+ECS Service (streaming control service),CloudWatch,unidirectional
+ECS Service (billing service),CloudWatch,unidirectional
+ECS Service (subscription service),CloudWatch,unidirectional
+ECS Service (notification service),CloudWatch,unidirectional
+ECS Service (encoding orchestrator),CloudWatch,unidirectional
+MediaConvert (transcoder),CloudWatch,unidirectional
+EC2 Auto Scaling Group (encoding workers),CloudWatch,unidirectional
+Lambda (event enricher),CloudWatch,unidirectional
+SageMaker Endpoint (reco model),CloudWatch,unidirectional
+CloudWatch,S3 (logs archive),unidirectional
+ECS Service (web frontend),Datadog Agent (metrics sidecar),unidirectional
+ECS Service (playback session service),Datadog Agent (metrics sidecar),unidirectional
+ECS Service (recommendation service),Datadog Agent (metrics sidecar),unidirectional
+ECS Service (web frontend),AWS X-Ray,unidirectional
+ECS Service (playback session service),AWS X-Ray,unidirectional
+ECS Service (recommendation service),AWS X-Ray,unidirectional
+ECS Service (auth service),IAM,unidirectional
+ECS Service (catalog service),IAM,unidirectional
+ECS Service (recommendation service),IAM,unidirectional
+ECS Service (playback session service),IAM,unidirectional
+ECS Service (encoding orchestrator),IAM,unidirectional
+MediaConvert (transcoder),IAM,unidirectional
+SageMaker Endpoint (reco model),IAM,unidirectional
+RDS (user accounts DB),KMS (encryption keys),unidirectional
+RDS (billing DB),KMS (encryption keys),unidirectional
+Aurora (catalog DB),KMS (encryption keys),unidirectional
+S3 (encoded assets),KMS (encryption keys),unidirectional
+S3 (logs archive),KMS (encryption keys),unidirectional
+ALB (web),VPC (main),unidirectional
+ALB (API),VPC (main),unidirectional
+ECS Service (web frontend),VPC (main),unidirectional
+ECS Service (auth service),VPC (main),unidirectional
+ECS Service (catalog service),VPC (main),unidirectional
+ECS Service (recommendation service),VPC (main),unidirectional
+ECS Service (playback session service),VPC (main),unidirectional
+ECS Service (encoding orchestrator),VPC (main),unidirectional
+EC2 Auto Scaling Group (encoding workers),VPC (main),unidirectional
+RDS (user accounts DB),VPC (main),unidirectional
+RDS (billing DB),VPC (main),unidirectional
+Aurora (catalog DB),VPC (main),unidirectional
+DynamoDB (session store),VPC (main),unidirectional
+DynamoDB (playback state),VPC (main),unidirectional
+MSK / Kafka Cluster (event bus),VPC (main),unidirectional
+Redshift (analytics warehouse),VPC (main),unidirectional
+SageMaker Endpoint (reco model),VPC (main),unidirectional

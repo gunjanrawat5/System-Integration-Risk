@@ -1,0 +1,63 @@
+Id,Label,node,system_id,in_degree,out_degree,degree,betweenness,closeness,eigenvector,pagerank,downstream_count,upstream_count,is_articulation,importance_score,risk_label
+Route 53,Route 53,Route 53,main_system_01,0,2,2,0.0,0.0,0.0,0.006783802979897,51,0,False,0.4470588235294118,high
+CloudFront (web/app CDN),CloudFront (web/app CDN),CloudFront (web/app CDN),main_system_01,1,2,3,0.0017345587017718,0.0163934426229508,0.0,0.0096668945983488,25,1,False,0.2866019602245694,high
+CloudFront (video CDN),CloudFront (video CDN),CloudFront (video CDN),main_system_01,1,3,4,0.0116534194403046,0.0163934426229508,0.0,0.0096668945983488,45,1,False,0.5809916430174696,high
+AWS WAF,AWS WAF,AWS WAF,main_system_01,1,1,2,0.0074722636198046,0.0218579234972677,0.0,0.0108922650057311,23,2,False,0.313329750969757,high
+ALB (web),ALB (web),ALB (web),main_system_01,1,2,3,0.0129367444941215,0.0245901639344262,0.0,0.0160422839406096,22,3,False,0.3918193369268918,high
+ALB (API),ALB (API),ALB (API),main_system_01,1,2,3,0.017013578407021,0.0218579234972677,0.0,0.0095227776637864,44,2,False,0.6112234331357437,high
+API Gateway (public API),API Gateway (public API),API Gateway (public API),main_system_01,1,10,11,0.0273960920682232,0.0245901639344262,0.0,0.0108309938396185,43,3,False,0.9109418817484172,high
+ECS Service (web frontend),ECS Service (web frontend),ECS Service (web frontend),main_system_01,1,6,7,0.0170351051498592,0.0262295081967213,0.0,0.0136018434917761,21,4,False,0.5251963303163115,high
+ECS Service (auth service),ECS Service (auth service),ECS Service (auth service),main_system_01,1,6,7,0.0025709278578131,0.0262295081967213,0.0,0.007704442590308,9,4,False,0.2648418069292614,medium
+ECS Service (user profile service),ECS Service (user profile service),ECS Service (user profile service),main_system_01,1,4,5,0.0023386874206546,0.0262295081967213,0.0,0.007704442590308,7,4,False,0.1994275681535341,medium
+ECS Service (catalog service),ECS Service (catalog service),ECS Service (catalog service),main_system_01,1,5,6,0.0023159187503449,0.0262295081967213,0.0,0.007704442590308,7,4,False,0.2226952994538761,medium
+ECS Service (search service),ECS Service (search service),ECS Service (search service),main_system_01,1,3,4,0.0017284870563559,0.0262295081967213,0.0,0.007704442590308,5,4,False,0.1531988454340723,medium
+ECS Service (recommendation service),ECS Service (recommendation service),ECS Service (recommendation service),main_system_01,2,8,10,0.0262958823204724,0.0689802001277411,0.0,0.0155032151024268,10,18,True,0.8159442233454424,high
+ECS Service (playback session service),ECS Service (playback session service),ECS Service (playback session service),main_system_01,1,8,9,0.0079443340508914,0.0262295081967213,0.0,0.007704442590308,22,4,False,0.4756180043622741,high
+ECS Service (streaming control service),ECS Service (streaming control service),ECS Service (streaming control service),main_system_01,0,3,3,0.0,0.0,0.0,0.006783802979897,6,0,False,0.1176470588235294,low
+ECS Service (billing service),ECS Service (billing service),ECS Service (billing service),main_system_01,1,3,4,0.0019743886957001,0.0262295081967213,0.0,0.007704442590308,9,4,False,0.1873975434688101,medium
+ECS Service (subscription service),ECS Service (subscription service),ECS Service (subscription service),main_system_01,1,3,4,0.0019743886957001,0.0262295081967213,0.0,0.007704442590308,9,4,False,0.1873975434688101,medium
+ECS Service (notification service),ECS Service (notification service),ECS Service (notification service),main_system_01,3,2,5,0.0048705635590881,0.0663934426229508,0.0,0.0393861319759385,6,9,False,0.2206832985358954,medium
+ECS Service (download service),ECS Service (download service),ECS Service (download service),main_system_01,1,2,3,0.0014754098360655,0.0262295081967213,0.0,0.007704442590308,3,4,False,0.1110745411496028,low
+ECS Service (device registry service),ECS Service (device registry service),ECS Service (device registry service),main_system_01,0,2,2,0.0,0.0,0.0,0.006783802979897,3,0,True,0.2705882352941177,high
+ECS Service (experiment service),ECS Service (experiment service),ECS Service (experiment service),main_system_01,1,2,3,0.0226775956284153,0.061528635299127,0.0,0.0183497617938823,12,17,False,0.4253396248593643,high
+RDS (user accounts DB),RDS (user accounts DB),RDS (user accounts DB),main_system_01,2,2,4,0.0012021857923497,0.0446265938069216,0.0,0.0151149511054083,2,7,False,0.1236206500870402,low
+RDS (billing DB),RDS (billing DB),RDS (billing DB),main_system_01,2,2,4,0.001311475409836,0.0368852459016393,0.0,0.0111496365708804,2,6,False,0.1248767163159868,medium
+Aurora (catalog DB),Aurora (catalog DB),Aurora (catalog DB),main_system_01,1,2,3,0.0003825136612021,0.0273224043715846,0.0,0.008093553057192,2,5,False,0.0906707416052347,low
+DynamoDB (session store),DynamoDB (session store),DynamoDB (session store),main_system_01,4,1,5,0.0004098360655737,0.058287795992714,0.0,0.0132141343910227,1,8,True,0.3302004444369812,high
+DynamoDB (playback state),DynamoDB (playback state),DynamoDB (playback state),main_system_01,2,1,3,0.0002732240437158,0.0368852459016393,0.0,0.0095244578571742,1,6,False,0.0815715381213861,low
+DynamoDB (device registry),DynamoDB (device registry),DynamoDB (device registry),main_system_01,1,0,1,0.0,0.0163934426229508,0.0,0.0096668945983488,0,1,False,0.0235294117647058,low
+DynamoDB (user features),DynamoDB (user features),DynamoDB (user features),main_system_01,2,0,2,0.0,0.0857685911142789,0.0,0.0112445246749336,0,19,False,0.0470588235294117,low
+OpenSearch (search index),OpenSearch (search index),OpenSearch (search index),main_system_01,2,0,2,0.0,0.0368852459016393,0.0,0.0102764698526837,0,6,False,0.0470588235294117,low
+Redis (web cache),Redis (web cache),Redis (web cache),main_system_01,2,0,2,0.0,0.0531147540983606,0.0,0.0108936617657057,0,9,False,0.0470588235294117,low
+Redis (session cache),Redis (session cache),Redis (session cache),main_system_01,2,0,2,0.0,0.0368852459016393,0.0,0.0095124489742616,0,6,False,0.0470588235294117,low
+S3 (raw uploads),S3 (raw uploads),S3 (raw uploads),main_system_01,1,1,2,0.0021857923497267,0.0245901639344262,0.0,0.0097111084237663,7,3,False,0.1270821088926578,medium
+S3 (encoded assets),S3 (encoded assets),S3 (encoded assets),main_system_01,5,1,6,0.0022950819672131,0.1044003451251078,0.0,0.0208421893751532,1,11,False,0.1753969986510162,medium
+S3 (thumbnails),S3 (thumbnails),S3 (thumbnails),main_system_01,3,0,3,0.0,0.0708430913348946,0.0,0.0173623101942607,0,11,False,0.0705882352941176,low
+S3 (analytics raw),S3 (analytics raw),S3 (analytics raw),main_system_01,1,1,2,0.003551912568306,0.0503725782414306,0.0,0.009597268904613,15,13,False,0.2055280347937062,medium
+S3 (analytics curated),S3 (analytics curated),S3 (analytics curated),main_system_01,1,1,2,0.003551912568306,0.0503725782414306,0.0,0.009597268904613,15,13,False,0.2055280347937062,medium
+S3 (feature store),S3 (feature store),S3 (feature store),main_system_01,1,0,1,0.0,0.0616461748633879,0.0,0.0084310587502177,0,19,False,0.0235294117647058,low
+S3 (logs archive),S3 (logs archive),S3 (logs archive),main_system_01,1,1,2,0.0064207650273224,0.1968651136036813,0.0,0.051991442122861,1,37,False,0.1286958517349274,medium
+MediaConvert (transcoder),MediaConvert (transcoder),MediaConvert (transcoder),main_system_01,1,4,5,0.0030054644808743,0.0262295081967213,0.0,0.0150382391180364,6,4,False,0.1992477036489731,medium
+ECS Service (encoding orchestrator),ECS Service (encoding orchestrator),ECS Service (encoding orchestrator),main_system_01,0,4,4,0.0,0.0,0.0,0.006783802979897,11,0,False,0.1803921568627451,medium
+EC2 Auto Scaling Group (encoding workers),EC2 Auto Scaling Group (encoding workers),EC2 Auto Scaling Group (encoding workers),main_system_01,1,4,5,0.003551912568306,0.0218579234972677,0.0,0.0137753566241829,9,2,False,0.2290574465584121,medium
+SQS (encoding jobs queue),SQS (encoding jobs queue),SQS (encoding jobs queue),main_system_01,1,1,2,0.0013661202185792,0.0163934426229508,0.0,0.0082253487891229,10,1,False,0.1411910239402641,medium
+SNS (user notifications),SNS (user notifications),SNS (user notifications),main_system_01,3,2,5,0.0049180327868852,0.063231850117096,0.0,0.0278865447845979,6,9,False,0.2212288626555389,medium
+SQS (email jobs queue),SQS (email jobs queue),SQS (email jobs queue),main_system_01,1,1,2,0.0008196721311475,0.047423887587822,0.0,0.0186334959591465,6,9,False,0.1035381437759231,low
+SQS (webhook events queue),SQS (webhook events queue),SQS (webhook events queue),main_system_01,1,1,2,0.0008196721311475,0.047423887587822,0.0,0.0186334959591465,6,9,False,0.1035381437759231,low
+Kinesis (clickstream stream),Kinesis (clickstream stream),Kinesis (clickstream stream),main_system_01,1,1,2,0.014207650273224,0.0273224043715846,0.0,0.008710744970214,19,5,False,0.3593670411356092,high
+Kinesis (playback events stream),Kinesis (playback events stream),Kinesis (playback events stream),main_system_01,2,1,3,0.0123994038748137,0.0455373406193078,0.0,0.0103413714620958,19,5,False,0.3621142662031984,high
+MSK / Kafka Cluster (event bus),MSK / Kafka Cluster (event bus),MSK / Kafka Cluster (event bus),main_system_01,2,2,4,0.0339841033283656,0.0661202185792349,0.0,0.0229781481535993,18,11,False,0.6258736209299592,high
+Lambda (event enricher),Lambda (event enricher),Lambda (event enricher),main_system_01,1,5,6,0.0348037754595131,0.0562060889929742,0.0,0.0165497143290742,17,12,False,0.6745098039215687,high
+Glue Data Catalog,Glue Data Catalog,Glue Data Catalog,main_system_01,2,2,4,0.0112021857923497,0.0526932084309133,0.0,0.0230991734567135,14,15,True,0.5326683570944792,high
+Athena (ad hoc queries),Athena (ad hoc queries),Athena (ad hoc queries),main_system_01,1,0,1,0.0,0.0487990850171559,0.0,0.0166012324272556,0,16,False,0.0235294117647058,low
+Redshift (analytics warehouse),Redshift (analytics warehouse),Redshift (analytics warehouse),main_system_01,3,2,5,0.0255464480874316,0.0776672937382424,0.0,0.0272134708640903,12,17,False,0.5053701868986247,high
+SageMaker Endpoint (reco model),SageMaker Endpoint (reco model),SageMaker Endpoint (reco model),main_system_01,1,3,4,0.0,0.0616461748633879,0.0,0.0084310587502177,5,19,False,0.1333333333333333,medium
+CloudWatch,CloudWatch,CloudWatch,main_system_01,16,1,17,0.015983606557377,0.2759208005109644,0.0,0.0531895014770882,2,36,False,0.5993859604932468,high
+AWS X-Ray,AWS X-Ray,AWS X-Ray,main_system_01,3,0,3,0.0,0.0896671634376552,0.0,0.0111765945388441,0,19,False,0.0705882352941176,low
+Datadog Agent (metrics sidecar),Datadog Agent (metrics sidecar),Datadog Agent (metrics sidecar),main_system_01,3,0,3,0.0,0.0896671634376552,0.0,0.0111765945388441,0,19,False,0.0705882352941176,low
+IAM,IAM,IAM,main_system_01,7,0,7,0.0,0.1149117276166456,0.0,0.0186768808424067,0,27,False,0.1647058823529411,medium
+KMS (encryption keys),KMS (encryption keys),KMS (encryption keys),main_system_01,5,0,5,0.0,0.2250901058016509,0.0,0.0832999945926916,0,44,False,0.1176470588235294,low
+Cognito (user pool),Cognito (user pool),Cognito (user pool),main_system_01,1,1,2,0.0004098360655737,0.0273224043715846,0.0,0.0078752613776428,3,5,False,0.0752984836526674,low
+VPC (main),VPC (main),VPC (main),main_system_01,17,0,17,0.0,0.360100027785496,0.0,0.086462976849577,0,36,False,0.4,high
+NAT Gateway,NAT Gateway,NAT Gateway,main_system_01,0,0,0,0.0,0.0,0.0,0.006783802979897,0,0,False,0.0,low
+Internet Gateway,Internet Gateway,Internet Gateway,main_system_01,0,0,0,0.0,0.0,0.0,0.006783802979897,0,0,False,0.0,low

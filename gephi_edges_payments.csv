@@ -1,0 +1,32 @@
+Source,Target,Type,relation,system_id
+Route 53,CloudFront (web),Directed,unidirectional,payment_gateway_01
+CloudFront (web),AWS WAF,Directed,unidirectional,payment_gateway_01
+AWS WAF,API Gateway (public),Directed,unidirectional,payment_gateway_01
+API Gateway (public),Lambda (payments),Directed,unidirectional,payment_gateway_01
+API Gateway (public),IAM,Directed,unidirectional,payment_gateway_01
+IAM,API Gateway (public),Directed,unidirectional,payment_gateway_01
+Lambda (payments),DynamoDB (transactions),Directed,unidirectional,payment_gateway_01
+Lambda (payments),SQS (settlement queue),Directed,unidirectional,payment_gateway_01
+Lambda (payments),SNS (fraud alerts),Directed,unidirectional,payment_gateway_01
+Lambda (payments),KMS (keys),Directed,unidirectional,payment_gateway_01
+KMS (keys),Lambda (payments),Directed,unidirectional,payment_gateway_01
+SQS (settlement queue),Lambda (settlement),Directed,unidirectional,payment_gateway_01
+Lambda (settlement),RDS (reporting),Directed,unidirectional,payment_gateway_01
+Lambda (settlement),KMS (keys),Directed,unidirectional,payment_gateway_01
+Lambda (settlement),VPC (main),Directed,unidirectional,payment_gateway_01
+VPC (main),Lambda (settlement),Directed,unidirectional,payment_gateway_01
+CloudFront (web),S3 (logs),Directed,unidirectional,payment_gateway_01
+API Gateway (public),S3 (logs),Directed,unidirectional,payment_gateway_01
+AWS WAF,S3 (logs),Directed,unidirectional,payment_gateway_01
+Lambda (payments),CloudWatch,Directed,unidirectional,payment_gateway_01
+Lambda (settlement),CloudWatch,Directed,unidirectional,payment_gateway_01
+API Gateway (public),CloudWatch,Directed,unidirectional,payment_gateway_01
+CloudFront (web),CloudWatch,Directed,unidirectional,payment_gateway_01
+CloudWatch,Lambda (payments),Directed,unidirectional,payment_gateway_01
+Lambda (payments),CloudWatch,Directed,unidirectional,payment_gateway_01
+Lambda (payments),IAM,Directed,unidirectional,payment_gateway_01
+Lambda (settlement),IAM,Directed,unidirectional,payment_gateway_01
+API Gateway (public),IAM,Directed,unidirectional,payment_gateway_01
+Lambda (payments),VPC (main),Directed,unidirectional,payment_gateway_01
+Lambda (settlement),VPC (main),Directed,unidirectional,payment_gateway_01
+RDS (reporting),VPC (main),Directed,unidirectional,payment_gateway_01

@@ -106,11 +106,11 @@ def write_csvs(components, edges,
 
 
 if __name__ == "__main__":
-    input_path = "support_ticketing.txt"
+    input_path = "MainSystem.txt"
 
     components, edges = parse_system_doc(input_path)
     write_csvs(components, edges,
-               components_path="components_supportticketing.csv",
-               edges_path="edgesSupportTicketing.csv")
+               components_path="components_mainsystem.csv",
+               edges_path="edgesMainsystem.csv")
 
     print("Wrote components.csv and edges.csv")

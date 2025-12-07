@@ -1,0 +1,21 @@
+Source,Target,Type,relation,system_id
+API Gateway (notifications admin),Lambda (notification dispatcher),Directed,unidirectional,notification_service_01
+Lambda (notification dispatcher),SNS (notifications topic),Directed,unidirectional,notification_service_01
+Lambda (notification dispatcher),SQS (email queue),Directed,unidirectional,notification_service_01
+Lambda (notification dispatcher),DynamoDB (user preferences),Directed,unidirectional,notification_service_01
+Lambda (notification dispatcher),S3 (templates),Directed,unidirectional,notification_service_01
+SQS (email queue),Lambda (notification dispatcher),Directed,unidirectional,notification_service_01
+SNS (notifications topic),Lambda (notification dispatcher),Directed,unidirectional,notification_service_01
+Lambda (notification dispatcher),SES (email service),Directed,unidirectional,notification_service_01
+Lambda (notification dispatcher),CloudWatch,Directed,unidirectional,notification_service_01
+API Gateway (notifications admin),CloudWatch,Directed,unidirectional,notification_service_01
+Lambda (notification dispatcher),IAM,Directed,unidirectional,notification_service_01
+API Gateway (notifications admin),IAM,Directed,unidirectional,notification_service_01
+Lambda (notification dispatcher),VPC (main),Directed,unidirectional,notification_service_01
+SES (email service),VPC (main),Directed,unidirectional,notification_service_01
+Lambda (notification dispatcher),DynamoDB (user preferences),Directed,unidirectional,notification_service_01
+DynamoDB (user preferences),Lambda (notification dispatcher),Directed,unidirectional,notification_service_01
+Lambda (notification dispatcher),S3 (templates),Directed,unidirectional,notification_service_01
+S3 (templates),Lambda (notification dispatcher),Directed,unidirectional,notification_service_01
+CloudWatch,Lambda (notification dispatcher),Directed,unidirectional,notification_service_01
+Lambda (notification dispatcher),CloudWatch,Directed,unidirectional,notification_service_01

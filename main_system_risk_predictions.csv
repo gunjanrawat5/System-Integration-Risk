@@ -1,0 +1,63 @@
+node,system_id,pred_label_idx,pred_label,p_low,p_medium,p_high
+Route 53,main_system_01,2,high,1.0108268e-08,0.00034521057,0.99965477
+CloudFront (web/app CDN),main_system_01,2,high,7.1275735e-10,0.0006463142,0.9993537
+CloudFront (video CDN),main_system_01,2,high,9.942456e-11,0.00030523541,0.9996948
+AWS WAF,main_system_01,1,medium,2.7014263e-05,0.52136654,0.47860646
+ALB (web),main_system_01,1,medium,0.0008012487,0.95209605,0.047102604
+ALB (API),main_system_01,2,high,1.11910786e-07,0.08886686,0.91113305
+API Gateway (public API),main_system_01,1,medium,1.6273763e-06,0.99428034,0.005718033
+ECS Service (web frontend),main_system_01,1,medium,0.0025878954,0.68526906,0.3121431
+ECS Service (auth service),main_system_01,1,medium,0.00076138077,0.8954326,0.103805944
+ECS Service (user profile service),main_system_01,1,medium,0.0004736008,0.9524674,0.04705898
+ECS Service (catalog service),main_system_01,1,medium,0.00068650633,0.91673446,0.08257907
+ECS Service (search service),main_system_01,1,medium,0.0004208992,0.9628229,0.036756184
+ECS Service (recommendation service),main_system_01,2,high,0.49011776,0.0010340136,0.5088482
+ECS Service (playback session service),main_system_01,1,medium,0.0002950213,0.9594552,0.040249866
+ECS Service (streaming control service),main_system_01,0,low,0.8869267,0.025961308,0.087111965
+ECS Service (billing service),main_system_01,1,medium,0.00024550667,0.9810875,0.018667014
+ECS Service (subscription service),main_system_01,1,medium,0.00024550667,0.9810875,0.018667014
+ECS Service (notification service),main_system_01,0,low,0.9490038,0.0009160295,0.050080195
+ECS Service (download service),main_system_01,1,medium,0.00037249087,0.9708877,0.02873984
+ECS Service (device registry service),main_system_01,0,low,0.7472284,0.09686016,0.1559114
+ECS Service (experiment service),main_system_01,0,low,0.9999994,3.892562e-07,2.601164e-07
+RDS (user accounts DB),main_system_01,0,low,0.9973375,0.0024695722,0.00019283564
+RDS (billing DB),main_system_01,1,medium,0.1428483,0.74853754,0.108614154
+Aurora (catalog DB),main_system_01,0,low,0.9991648,0.0008027178,3.252164e-05
+DynamoDB (session store),main_system_01,0,low,0.64445657,0.29962248,0.05592097
+DynamoDB (playback state),main_system_01,0,low,0.8154107,0.08971979,0.09486962
+DynamoDB (device registry),main_system_01,0,low,0.71412367,0.14756884,0.13830753
+DynamoDB (user features),main_system_01,0,low,0.9724205,0.026914027,0.0006654578
+OpenSearch (search index),main_system_01,0,low,0.9778772,0.020509748,0.0016130534
+Redis (web cache),main_system_01,1,medium,0.06314869,0.8043426,0.1325087
+Redis (session cache),main_system_01,0,low,0.8588302,0.1352351,0.005934691
+S3 (raw uploads),main_system_01,1,medium,0.32448658,0.49586254,0.1796508
+S3 (encoded assets),main_system_01,2,high,8.69601e-06,0.0012630075,0.99872833
+S3 (thumbnails),main_system_01,2,high,1.1051186e-05,0.0034963752,0.99649256
+S3 (analytics raw),main_system_01,2,high,0.1967137,0.16897817,0.63430816
+S3 (analytics curated),main_system_01,2,high,0.1967137,0.16897817,0.63430816
+S3 (feature store),main_system_01,0,low,0.9999999,6.064209e-08,3.863898e-12
+S3 (logs archive),main_system_01,0,low,1.0,1.8393106e-10,6.4494454e-16
+MediaConvert (transcoder),main_system_01,1,medium,0.2441233,0.5548858,0.20099089
+ECS Service (encoding orchestrator),main_system_01,0,low,0.7762458,0.038254302,0.18549992
+EC2 Auto Scaling Group (encoding workers),main_system_01,1,medium,0.27576688,0.4852648,0.23896836
+SQS (encoding jobs queue),main_system_01,0,low,0.56509566,0.11319653,0.32170781
+SNS (user notifications),main_system_01,1,medium,0.063586116,0.75678104,0.1796329
+SQS (email jobs queue),main_system_01,0,low,0.9894785,0.009744609,0.0007768561
+SQS (webhook events queue),main_system_01,0,low,0.9894785,0.009744609,0.0007768561
+Kinesis (clickstream stream),main_system_01,1,medium,0.0107061835,0.7324555,0.25683823
+Kinesis (playback events stream),main_system_01,2,high,4.8760503e-06,0.15100873,0.8489864
+MSK / Kafka Cluster (event bus),main_system_01,2,high,0.001236583,0.26924196,0.72952145
+Lambda (event enricher),main_system_01,2,high,0.13965853,0.11336258,0.7469789
+Glue Data Catalog,main_system_01,0,low,0.99843425,0.00013238472,0.0014333675
+Athena (ad hoc queries),main_system_01,0,low,1.0,2.7813382e-11,2.1688824e-11
+Redshift (analytics warehouse),main_system_01,0,low,0.9999988,1.815523e-07,9.3357795e-07
+SageMaker Endpoint (reco model),main_system_01,0,low,0.9999894,1.0610263e-05,2.5038152e-10
+CloudWatch,main_system_01,0,low,0.9942567,0.0055666706,0.00017674474
+AWS X-Ray,main_system_01,1,medium,0.038754366,0.8913279,0.06991777
+Datadog Agent (metrics sidecar),main_system_01,1,medium,0.038754366,0.8913279,0.06991777
+IAM,main_system_01,0,low,0.99999726,2.6561788e-06,7.0428435e-08
+KMS (encryption keys),main_system_01,0,low,1.0,3.456701e-11,8.573927e-18
+Cognito (user pool),main_system_01,0,low,0.9892491,0.009804533,0.00094640296
+VPC (main),main_system_01,0,low,0.99964166,2.1665222e-05,0.0003366944
+NAT Gateway,main_system_01,0,low,0.7752314,0.10963589,0.115132675
+Internet Gateway,main_system_01,0,low,0.7752314,0.10963589,0.115132675

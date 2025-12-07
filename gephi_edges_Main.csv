@@ -1,0 +1,130 @@
+Source,Target,Type,relation,system_id
+Route 53,CloudFront (web/app CDN),Directed,unidirectional,main_system_01
+Route 53,CloudFront (video CDN),Directed,unidirectional,main_system_01
+CloudFront (web/app CDN),AWS WAF,Directed,unidirectional,main_system_01
+AWS WAF,ALB (web),Directed,unidirectional,main_system_01
+CloudFront (video CDN),ALB (API),Directed,unidirectional,main_system_01
+ALB (web),ECS Service (web frontend),Directed,unidirectional,main_system_01
+ALB (API),API Gateway (public API),Directed,unidirectional,main_system_01
+API Gateway (public API),ECS Service (auth service),Directed,unidirectional,main_system_01
+API Gateway (public API),ECS Service (user profile service),Directed,unidirectional,main_system_01
+API Gateway (public API),ECS Service (catalog service),Directed,unidirectional,main_system_01
+API Gateway (public API),ECS Service (search service),Directed,unidirectional,main_system_01
+API Gateway (public API),ECS Service (recommendation service),Directed,unidirectional,main_system_01
+API Gateway (public API),ECS Service (playback session service),Directed,unidirectional,main_system_01
+API Gateway (public API),ECS Service (billing service),Directed,unidirectional,main_system_01
+API Gateway (public API),ECS Service (subscription service),Directed,unidirectional,main_system_01
+API Gateway (public API),ECS Service (notification service),Directed,unidirectional,main_system_01
+API Gateway (public API),ECS Service (download service),Directed,unidirectional,main_system_01
+ECS Service (auth service),Cognito (user pool),Directed,unidirectional,main_system_01
+Cognito (user pool),RDS (user accounts DB),Directed,unidirectional,main_system_01
+ECS Service (auth service),DynamoDB (session store),Directed,unidirectional,main_system_01
+ECS Service (auth service),Redis (session cache),Directed,unidirectional,main_system_01
+ECS Service (user profile service),RDS (user accounts DB),Directed,unidirectional,main_system_01
+ECS Service (user profile service),DynamoDB (session store),Directed,unidirectional,main_system_01
+ECS Service (user profile service),Redis (session cache),Directed,unidirectional,main_system_01
+ECS Service (catalog service),Aurora (catalog DB),Directed,unidirectional,main_system_01
+ECS Service (catalog service),OpenSearch (search index),Directed,unidirectional,main_system_01
+ECS Service (search service),OpenSearch (search index),Directed,unidirectional,main_system_01
+ECS Service (search service),Redis (web cache),Directed,unidirectional,main_system_01
+ECS Service (recommendation service),SageMaker Endpoint (reco model),Directed,unidirectional,main_system_01
+ECS Service (recommendation service),S3 (feature store),Directed,unidirectional,main_system_01
+ECS Service (recommendation service),DynamoDB (user features),Directed,unidirectional,main_system_01
+ECS Service (experiment service),Redshift (analytics warehouse),Directed,unidirectional,main_system_01
+Redshift (analytics warehouse),ECS Service (experiment service),Directed,unidirectional,main_system_01
+ECS Service (experiment service),ECS Service (recommendation service),Directed,unidirectional,main_system_01
+ECS Service (playback session service),DynamoDB (playback state),Directed,unidirectional,main_system_01
+ECS Service (playback session service),DynamoDB (session store),Directed,unidirectional,main_system_01
+ECS Service (streaming control service),DynamoDB (playback state),Directed,unidirectional,main_system_01
+ECS Service (streaming control service),S3 (encoded assets),Directed,unidirectional,main_system_01
+ECS Service (download service),S3 (encoded assets),Directed,unidirectional,main_system_01
+ECS Service (download service),S3 (thumbnails),Directed,unidirectional,main_system_01
+CloudFront (video CDN),S3 (encoded assets),Directed,unidirectional,main_system_01
+CloudFront (web/app CDN),S3 (thumbnails),Directed,unidirectional,main_system_01
+ECS Service (device registry service),DynamoDB (device registry),Directed,unidirectional,main_system_01
+ECS Service (device registry service),DynamoDB (session store),Directed,unidirectional,main_system_01
+ECS Service (billing service),RDS (billing DB),Directed,unidirectional,main_system_01
+ECS Service (billing service),SNS (user notifications),Directed,unidirectional,main_system_01
+ECS Service (subscription service),RDS (billing DB),Directed,unidirectional,main_system_01
+ECS Service (subscription service),SNS (user notifications),Directed,unidirectional,main_system_01
+ECS Service (notification service),SNS (user notifications),Directed,unidirectional,main_system_01
+SNS (user notifications),SQS (email jobs queue),Directed,unidirectional,main_system_01
+SNS (user notifications),SQS (webhook events queue),Directed,unidirectional,main_system_01
+SQS (email jobs queue),ECS Service (notification service),Directed,unidirectional,main_system_01
+SQS (webhook events queue),ECS Service (notification service),Directed,unidirectional,main_system_01
+S3 (raw uploads),MediaConvert (transcoder),Directed,unidirectional,main_system_01
+MediaConvert (transcoder),S3 (encoded assets),Directed,unidirectional,main_system_01
+MediaConvert (transcoder),S3 (thumbnails),Directed,unidirectional,main_system_01
+ECS Service (encoding orchestrator),SQS (encoding jobs queue),Directed,unidirectional,main_system_01
+SQS (encoding jobs queue),EC2 Auto Scaling Group (encoding workers),Directed,unidirectional,main_system_01
+EC2 Auto Scaling Group (encoding workers),S3 (raw uploads),Directed,unidirectional,main_system_01
+EC2 Auto Scaling Group (encoding workers),S3 (encoded assets),Directed,unidirectional,main_system_01
+ECS Service (web frontend),Kinesis (clickstream stream),Directed,unidirectional,main_system_01
+ECS Service (playback session service),Kinesis (playback events stream),Directed,unidirectional,main_system_01
+CloudFront (video CDN),Kinesis (playback events stream),Directed,unidirectional,main_system_01
+Kinesis (clickstream stream),MSK / Kafka Cluster (event bus),Directed,unidirectional,main_system_01
+Kinesis (playback events stream),MSK / Kafka Cluster (event bus),Directed,unidirectional,main_system_01
+MSK / Kafka Cluster (event bus),Lambda (event enricher),Directed,unidirectional,main_system_01
+Lambda (event enricher),S3 (analytics raw),Directed,unidirectional,main_system_01
+Lambda (event enricher),S3 (analytics curated),Directed,unidirectional,main_system_01
+Lambda (event enricher),Redshift (analytics warehouse),Directed,unidirectional,main_system_01
+Lambda (event enricher),DynamoDB (user features),Directed,unidirectional,main_system_01
+S3 (analytics raw),Glue Data Catalog,Directed,unidirectional,main_system_01
+S3 (analytics curated),Glue Data Catalog,Directed,unidirectional,main_system_01
+Glue Data Catalog,Athena (ad hoc queries),Directed,unidirectional,main_system_01
+Glue Data Catalog,Redshift (analytics warehouse),Directed,unidirectional,main_system_01
+ECS Service (web frontend),Redis (web cache),Directed,unidirectional,main_system_01
+ECS Service (auth service),Redis (session cache),Directed,unidirectional,main_system_01
+ECS Service (user profile service),Redis (session cache),Directed,unidirectional,main_system_01
+ECS Service (web frontend),CloudWatch,Directed,unidirectional,main_system_01
+ECS Service (auth service),CloudWatch,Directed,unidirectional,main_system_01
+ECS Service (user profile service),CloudWatch,Directed,unidirectional,main_system_01
+ECS Service (catalog service),CloudWatch,Directed,unidirectional,main_system_01
+ECS Service (search service),CloudWatch,Directed,unidirectional,main_system_01
+ECS Service (recommendation service),CloudWatch,Directed,unidirectional,main_system_01
+ECS Service (playback session service),CloudWatch,Directed,unidirectional,main_system_01
+ECS Service (streaming control service),CloudWatch,Directed,unidirectional,main_system_01
+ECS Service (billing service),CloudWatch,Directed,unidirectional,main_system_01
+ECS Service (subscription service),CloudWatch,Directed,unidirectional,main_system_01
+ECS Service (notification service),CloudWatch,Directed,unidirectional,main_system_01
+ECS Service (encoding orchestrator),CloudWatch,Directed,unidirectional,main_system_01
+MediaConvert (transcoder),CloudWatch,Directed,unidirectional,main_system_01
+EC2 Auto Scaling Group (encoding workers),CloudWatch,Directed,unidirectional,main_system_01
+Lambda (event enricher),CloudWatch,Directed,unidirectional,main_system_01
+SageMaker Endpoint (reco model),CloudWatch,Directed,unidirectional,main_system_01
+CloudWatch,S3 (logs archive),Directed,unidirectional,main_system_01
+ECS Service (web frontend),Datadog Agent (metrics sidecar),Directed,unidirectional,main_system_01
+ECS Service (playback session service),Datadog Agent (metrics sidecar),Directed,unidirectional,main_system_01
+ECS Service (recommendation service),Datadog Agent (metrics sidecar),Directed,unidirectional,main_system_01
+ECS Service (web frontend),AWS X-Ray,Directed,unidirectional,main_system_01
+ECS Service (playback session service),AWS X-Ray,Directed,unidirectional,main_system_01
+ECS Service (recommendation service),AWS X-Ray,Directed,unidirectional,main_system_01
+ECS Service (auth service),IAM,Directed,unidirectional,main_system_01
+ECS Service (catalog service),IAM,Directed,unidirectional,main_system_01
+ECS Service (recommendation service),IAM,Directed,unidirectional,main_system_01
+ECS Service (playback session service),IAM,Directed,unidirectional,main_system_01
+ECS Service (encoding orchestrator),IAM,Directed,unidirectional,main_system_01
+MediaConvert (transcoder),IAM,Directed,unidirectional,main_system_01
+SageMaker Endpoint (reco model),IAM,Directed,unidirectional,main_system_01
+RDS (user accounts DB),KMS (encryption keys),Directed,unidirectional,main_system_01
+RDS (billing DB),KMS (encryption keys),Directed,unidirectional,main_system_01
+Aurora (catalog DB),KMS (encryption keys),Directed,unidirectional,main_system_01
+S3 (encoded assets),KMS (encryption keys),Directed,unidirectional,main_system_01
+S3 (logs archive),KMS (encryption keys),Directed,unidirectional,main_system_01
+ALB (web),VPC (main),Directed,unidirectional,main_system_01
+ALB (API),VPC (main),Directed,unidirectional,main_system_01
+ECS Service (web frontend),VPC (main),Directed,unidirectional,main_system_01
+ECS Service (auth service),VPC (main),Directed,unidirectional,main_system_01
+ECS Service (catalog service),VPC (main),Directed,unidirectional,main_system_01
+ECS Service (recommendation service),VPC (main),Directed,unidirectional,main_system_01
+ECS Service (playback session service),VPC (main),Directed,unidirectional,main_system_01
+ECS Service (encoding orchestrator),VPC (main),Directed,unidirectional,main_system_01
+EC2 Auto Scaling Group (encoding workers),VPC (main),Directed,unidirectional,main_system_01
+RDS (user accounts DB),VPC (main),Directed,unidirectional,main_system_01
+RDS (billing DB),VPC (main),Directed,unidirectional,main_system_01
+Aurora (catalog DB),VPC (main),Directed,unidirectional,main_system_01
+DynamoDB (session store),VPC (main),Directed,unidirectional,main_system_01
+DynamoDB (playback state),VPC (main),Directed,unidirectional,main_system_01
+MSK / Kafka Cluster (event bus),VPC (main),Directed,unidirectional,main_system_01
+Redshift (analytics warehouse),VPC (main),Directed,unidirectional,main_system_01
+SageMaker Endpoint (reco model),VPC (main),Directed,unidirectional,main_system_01

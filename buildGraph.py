@@ -67,6 +67,11 @@ SYSTEMS = [
         "components_csv": "components_partnerhub.csv",
         "edges_csv": "edgesPartnerHub.csv",
     },
+        {
+        "system_id": "main_system_01",          # <-- choose a name
+        "components_csv": "components_MainSystem.csv",
+        "edges_csv": "edgesMainSystem.csv",
+    },
 ]
 
 

@@ -1,0 +1,16 @@
+Id,Label,node,system_id,in_degree,out_degree,degree,betweenness,closeness,eigenvector,pagerank,downstream_count,upstream_count,is_articulation,importance_score,risk_label
+Route 53,Route 53,Route 53,payment_gateway_01,0,1,1,0.0,0.0,0.0,0.0175935309411329,14,0,False,0.4,low
+CloudFront (web),CloudFront (web),CloudFront (web),payment_gateway_01,1,3,4,0.0714285714285714,0.0714285714285714,0.0,0.0325479409079186,13,1,True,0.7823738450604123,high
+AWS WAF,AWS WAF,AWS WAF,payment_gateway_01,1,2,3,0.0164835164835164,0.0952380952380952,0.0,0.0268154604812384,12,2,False,0.4496564795072257,medium
+API Gateway (public),API Gateway (public),API Gateway (public),payment_gateway_01,2,4,6,0.1538461538461538,0.32010582010582,0.0,0.0970440615903729,11,11,False,0.7036721156124142,high
+Lambda (payments),Lambda (payments),Lambda (payments),payment_gateway_01,3,7,10,0.3681318681318681,0.3601190476190476,0.0,0.1646329013116218,11,11,True,1.3142857142857145,high
+Lambda (settlement),Lambda (settlement),Lambda (settlement),payment_gateway_01,2,5,7,0.2032967032967033,0.2700892857142857,0.0,0.1285682868666987,11,11,False,0.8018479033404406,high
+DynamoDB (transactions),DynamoDB (transactions),DynamoDB (transactions),payment_gateway_01,1,0,1,0.0,0.2857142857142857,0.0,0.0375844314917282,0,12,False,0.0,low
+RDS (reporting),RDS (reporting),RDS (reporting),payment_gateway_01,1,1,2,0.0,0.210801393728223,0.0,0.0394499742443745,11,11,False,0.3587301587301587,low
+SQS (settlement queue),SQS (settlement queue),SQS (settlement queue),payment_gateway_01,1,1,2,0.0439560439560439,0.2700892857142857,0.0,0.0375844314917282,11,11,False,0.4064913527600095,medium
+SNS (fraud alerts),SNS (fraud alerts),SNS (fraud alerts),payment_gateway_01,1,0,1,0.0,0.2857142857142857,0.0,0.0375844314917282,0,12,False,0.0,low
+KMS (keys),KMS (keys),KMS (keys),payment_gateway_01,2,1,3,0.0412087912087912,0.3324175824175824,0.0,0.0594408747949698,11,11,False,0.4479507225775883,medium
+CloudWatch,CloudWatch,CloudWatch,payment_gateway_01,4,1,5,0.1346153846153846,0.4548872180451128,0.0,0.0892843111646965,11,11,False,0.6383321487799101,high
+IAM,IAM,IAM,payment_gateway_01,3,1,4,0.0769230769230769,0.3757763975155279,0.0,0.080062381624591,11,11,False,0.5312011371712864,medium
+S3 (logs),S3 (logs),S3 (logs),payment_gateway_01,3,0,3,0.0,0.3025210084033613,0.0,0.0588334833292251,0,12,False,0.0888888888888888,low
+VPC (main),VPC (main),VPC (main),payment_gateway_01,3,1,4,0.0989010989010989,0.3601190476190476,0.0,0.0929734982679744,11,11,False,0.5550817341862118,medium

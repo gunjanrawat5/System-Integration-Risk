@@ -1,0 +1,63 @@
+﻿Id,Label,node,system_id,pred_risk
+Route 53,Route 53,Route 53,main_system_01,high
+CloudFront (web/app CDN),CloudFront (web/app CDN),CloudFront (web/app CDN),main_system_01,high
+CloudFront (video CDN),CloudFront (video CDN),CloudFront (video CDN),main_system_01,high
+AWS WAF,AWS WAF,AWS WAF,main_system_01,medium
+ALB (web),ALB (web),ALB (web),main_system_01,medium
+ALB (API),ALB (API),ALB (API),main_system_01,high
+API Gateway (public API),API Gateway (public API),API Gateway (public API),main_system_01,medium
+ECS Service (web frontend),ECS Service (web frontend),ECS Service (web frontend),main_system_01,medium
+ECS Service (auth service),ECS Service (auth service),ECS Service (auth service),main_system_01,medium
+ECS Service (user profile service),ECS Service (user profile service),ECS Service (user profile service),main_system_01,medium
+ECS Service (catalog service),ECS Service (catalog service),ECS Service (catalog service),main_system_01,medium
+ECS Service (search service),ECS Service (search service),ECS Service (search service),main_system_01,medium
+ECS Service (recommendation service),ECS Service (recommendation service),ECS Service (recommendation service),main_system_01,high
+ECS Service (playback session service),ECS Service (playback session service),ECS Service (playback session service),main_system_01,medium
+ECS Service (streaming control service),ECS Service (streaming control service),ECS Service (streaming control service),main_system_01,low
+ECS Service (billing service),ECS Service (billing service),ECS Service (billing service),main_system_01,medium
+ECS Service (subscription service),ECS Service (subscription service),ECS Service (subscription service),main_system_01,medium
+ECS Service (notification service),ECS Service (notification service),ECS Service (notification service),main_system_01,low
+ECS Service (download service),ECS Service (download service),ECS Service (download service),main_system_01,medium
+ECS Service (device registry service),ECS Service (device registry service),ECS Service (device registry service),main_system_01,low
+ECS Service (experiment service),ECS Service (experiment service),ECS Service (experiment service),main_system_01,low
+RDS (user accounts DB),RDS (user accounts DB),RDS (user accounts DB),main_system_01,low
+RDS (billing DB),RDS (billing DB),RDS (billing DB),main_system_01,medium
+Aurora (catalog DB),Aurora (catalog DB),Aurora (catalog DB),main_system_01,low
+DynamoDB (session store),DynamoDB (session store),DynamoDB (session store),main_system_01,low
+DynamoDB (playback state),DynamoDB (playback state),DynamoDB (playback state),main_system_01,low
+DynamoDB (device registry),DynamoDB (device registry),DynamoDB (device registry),main_system_01,low
+DynamoDB (user features),DynamoDB (user features),DynamoDB (user features),main_system_01,low
+OpenSearch (search index),OpenSearch (search index),OpenSearch (search index),main_system_01,low
+Redis (web cache),Redis (web cache),Redis (web cache),main_system_01,medium
+Redis (session cache),Redis (session cache),Redis (session cache),main_system_01,low
+S3 (raw uploads),S3 (raw uploads),S3 (raw uploads),main_system_01,medium
+S3 (encoded assets),S3 (encoded assets),S3 (encoded assets),main_system_01,high
+S3 (thumbnails),S3 (thumbnails),S3 (thumbnails),main_system_01,high
+S3 (analytics raw),S3 (analytics raw),S3 (analytics raw),main_system_01,high
+S3 (analytics curated),S3 (analytics curated),S3 (analytics curated),main_system_01,high
+S3 (feature store),S3 (feature store),S3 (feature store),main_system_01,low
+S3 (logs archive),S3 (logs archive),S3 (logs archive),main_system_01,low
+MediaConvert (transcoder),MediaConvert (transcoder),MediaConvert (transcoder),main_system_01,medium
+ECS Service (encoding orchestrator),ECS Service (encoding orchestrator),ECS Service (encoding orchestrator),main_system_01,low
+EC2 Auto Scaling Group (encoding workers),EC2 Auto Scaling Group (encoding workers),EC2 Auto Scaling Group (encoding workers),main_system_01,medium
+SQS (encoding jobs queue),SQS (encoding jobs queue),SQS (encoding jobs queue),main_system_01,low
+SNS (user notifications),SNS (user notifications),SNS (user notifications),main_system_01,medium
+SQS (email jobs queue),SQS (email jobs queue),SQS (email jobs queue),main_system_01,low
+SQS (webhook events queue),SQS (webhook events queue),SQS (webhook events queue),main_system_01,low
+Kinesis (clickstream stream),Kinesis (clickstream stream),Kinesis (clickstream stream),main_system_01,medium
+Kinesis (playback events stream),Kinesis (playback events stream),Kinesis (playback events stream),main_system_01,high
+MSK / Kafka Cluster (event bus),MSK / Kafka Cluster (event bus),MSK / Kafka Cluster (event bus),main_system_01,high
+Lambda (event enricher),Lambda (event enricher),Lambda (event enricher),main_system_01,high
+Glue Data Catalog,Glue Data Catalog,Glue Data Catalog,main_system_01,low
+Athena (ad hoc queries),Athena (ad hoc queries),Athena (ad hoc queries),main_system_01,low
+Redshift (analytics warehouse),Redshift (analytics warehouse),Redshift (analytics warehouse),main_system_01,low
+SageMaker Endpoint (reco model),SageMaker Endpoint (reco model),SageMaker Endpoint (reco model),main_system_01,low
+CloudWatch,CloudWatch,CloudWatch,main_system_01,low
+AWS X-Ray,AWS X-Ray,AWS X-Ray,main_system_01,medium
+Datadog Agent (metrics sidecar),Datadog Agent (metrics sidecar),Datadog Agent (metrics sidecar),main_system_01,medium
+IAM,IAM,IAM,main_system_01,low
+KMS (encryption keys),KMS (encryption keys),KMS (encryption keys),main_system_01,low
+Cognito (user pool),Cognito (user pool),Cognito (user pool),main_system_01,low
+VPC (main),VPC (main),VPC (main),main_system_01,low
+NAT Gateway,NAT Gateway,NAT Gateway,main_system_01,low
+Internet Gateway,Internet Gateway,Internet Gateway,main_system_01,low
