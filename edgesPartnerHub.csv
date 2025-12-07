@@ -1,0 +1,24 @@
+source,target,relation
+API Gateway (partner),Lambda (webhook router),unidirectional
+Lambda (webhook router),SQS (incoming webhooks),unidirectional
+Lambda (webhook router),CloudWatch,unidirectional
+Lambda (webhook router),IAM,unidirectional
+Lambda (webhook router),VPC (main),unidirectional
+SQS (incoming webhooks),Lambda (transformation worker),unidirectional
+Lambda (transformation worker),EventBridge (internal events),unidirectional
+Lambda (transformation worker),SQS (outgoing webhooks),unidirectional
+Lambda (transformation worker),S3 (dead-letter payloads),unidirectional
+Lambda (transformation worker),Postgres (partner audit DB),unidirectional
+Lambda (transformation worker),Third-Party CRM API,unidirectional
+Lambda (transformation worker),Third-Party ERP API,unidirectional
+Lambda (transformation worker),CloudWatch,unidirectional
+Lambda (transformation worker),IAM,unidirectional
+Lambda (transformation worker),VPC (main),unidirectional
+EventBridge (internal events),ECS Service (mapping config API),unidirectional
+EventBridge (internal events),Lambda (webhook router),unidirectional
+ECS Service (mapping config API),DynamoDB (partner configs),unidirectional
+ECS Service (mapping config API),Postgres (partner audit DB),unidirectional
+ECS Service (mapping config API),CloudWatch,unidirectional
+ECS Service (mapping config API),IAM,unidirectional
+ECS Service (mapping config API),VPC (main),unidirectional
+Postgres (partner audit DB),VPC (main),unidirectional

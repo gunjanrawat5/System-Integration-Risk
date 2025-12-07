@@ -77,27 +77,25 @@ def main():
     system_ids = sorted(graphs.keys())
     print("Available systems:", system_ids)
 
-    # Choose 1 system as validation, rest as train
-    # You can change this to use a different val system if you want
-    val_system_id = "analytics_pipeline_01"
-    if val_system_id not in graphs:
-        val_system_id = system_ids[-1]  # fallback
+    # Split: first 8 for training, last 4 for validation
+    train_ids = system_ids[:8]
+    val_ids = system_ids[8:]
 
-    train_graphs = [g for sid, g in graphs.items() if sid != val_system_id]
-    val_graphs = [graphs[val_system_id]]
+    train_graphs = [graphs[sid] for sid in train_ids]
+    val_graphs = [graphs[sid] for sid in val_ids]
 
-    print("Train systems:", [g.system_id for g in train_graphs])
-    print("Val system:", val_system_id)
+    print("Train systems:", train_ids)
+    print("Val systems:", val_ids)
 
     train_loader = DataLoader(train_graphs, batch_size=len(train_graphs), shuffle=True)
-    val_loader = DataLoader(val_graphs, batch_size=1, shuffle=False)
+    val_loader = DataLoader(val_graphs, batch_size=len(val_graphs), shuffle=False)
 
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
     in_dim = train_graphs[0].num_node_features
     model = RiskGCN(in_dim=in_dim, hidden_dim=32, num_classes=3).to(device)
 
-    optimizer = torch.optim.Adam(model.parameters(), lr=1e-2, weight_decay=5e-4)
+    optimizer = torch.optim.Adam(model.parameters(), lr=5e-3, weight_decay=5e-4)
 
     for epoch in range(1, 201):
         train_loss, train_acc = train_epoch(model, train_loader, optimizer, device)

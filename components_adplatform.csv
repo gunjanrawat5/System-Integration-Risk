@@ -1,0 +1,19 @@
+name
+Route 53
+CloudFront (ads CDN)
+ALB (ad API)
+ECS Service (ad decision API)
+RDS (campaign DB)
+DynamoDB (realtime counters)
+Kinesis (impression stream)
+Lambda (click tracker)
+Lambda (aggregation worker)
+S3 (raw logs)
+S3 (aggregated reports)
+Redshift (ad analytics warehouse)
+Elasticsearch / OpenSearch (ad search index)
+Redis (ad cache)
+Third-Party Ad Exchange API
+CloudWatch
+IAM
+VPC (main)

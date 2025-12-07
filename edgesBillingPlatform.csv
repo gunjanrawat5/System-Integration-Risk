@@ -1,0 +1,26 @@
+source,target,relation
+Route 53,CloudFront (web),unidirectional
+CloudFront (web),ALB (app),unidirectional
+ALB (app),ECS Service (billing API),unidirectional
+ECS Service (billing API),RDS (billing DB),unidirectional
+ECS Service (billing API),DynamoDB (usage ledger),unidirectional
+ECS Service (billing API),Stripe API (payments SaaS),unidirectional
+ECS Service (billing API),Plaid API (bank linking),unidirectional
+ECS Service (billing API),SQS (billing jobs queue),unidirectional
+SQS (billing jobs queue),Lambda (invoice generator),unidirectional
+Lambda (invoice generator),S3 (invoice PDFs),unidirectional
+Lambda (invoice generator),SNS (billing notifications),unidirectional
+Lambda (payment reconciler),RDS (billing DB),unidirectional
+Lambda (payment reconciler),Stripe API (payments SaaS),unidirectional
+Lambda (payment reconciler),DynamoDB (usage ledger),unidirectional
+Stripe API (payments SaaS),Lambda (payment reconciler),unidirectional
+ECS Service (billing API),CloudWatch,unidirectional
+Lambda (invoice generator),CloudWatch,unidirectional
+Lambda (payment reconciler),CloudWatch,unidirectional
+ECS Service (billing API),Datadog Agent (metrics sidecar),unidirectional
+ECS Service (billing API),IAM,unidirectional
+Lambda (invoice generator),IAM,unidirectional
+Lambda (payment reconciler),IAM,unidirectional
+ECS Service (billing API),VPC (main),unidirectional
+RDS (billing DB),VPC (main),unidirectional
+DynamoDB (usage ledger),VPC (main),unidirectional

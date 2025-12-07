@@ -1,0 +1,56 @@
+System: Identity & Access Management Platform
+System ID: identity_platform_01
+
+Components:
+- Route 53
+- CloudFront (auth UI)
+- ALB (auth service)
+- ECS Service (OAuth server)
+- RDS (identity DB)
+- Redis (session cache)
+- Cognito (user pool)
+- Okta IdP (enterprise SSO)
+- LDAP Directory (on-prem)
+- Lambda (provisioning sync)
+- SQS (provisioning queue)
+- SNS (security alerts)
+- CloudWatch
+- IAM
+- VPC (main)
+
+Edges:
+- Route 53 -> CloudFront (auth UI) [unidirectional]
+
+- CloudFront (auth UI) -> ALB (auth service) [unidirectional]
+
+- ALB (auth service) -> ECS Service (OAuth server) [unidirectional]
+
+- ECS Service (OAuth server) -> RDS (identity DB) [unidirectional]
+- ECS Service (OAuth server) -> Redis (session cache) [unidirectional]
+- ECS Service (OAuth server) -> Cognito (user pool) [unidirectional]
+- ECS Service (OAuth server) -> Okta IdP (enterprise SSO) [unidirectional]
+- Okta IdP (enterprise SSO) -> ECS Service (OAuth server) [unidirectional]
+
+- ECS Service (OAuth server) -> LDAP Directory (on-prem) [unidirectional]
+- LDAP Directory (on-prem) -> Lambda (provisioning sync) [unidirectional]
+
+- Lambda (provisioning sync) -> SQS (provisioning queue) [unidirectional]
+- SQS (provisioning queue) -> Lambda (provisioning sync) [unidirectional]
+
+- Lambda (provisioning sync) -> Cognito (user pool) [unidirectional]
+- Lambda (provisioning sync) -> RDS (identity DB) [unidirectional]
+- Lambda (provisioning sync) -> SNS (security alerts) [unidirectional]
+
+- ECS Service (OAuth server) -> CloudWatch [unidirectional]
+- Lambda (provisioning sync) -> CloudWatch [unidirectional]
+- Cognito (user pool) -> CloudWatch [unidirectional]
+
+- ECS Service (OAuth server) -> IAM [unidirectional]
+- Lambda (provisioning sync) -> IAM [unidirectional]
+- Cognito (user pool) -> IAM [unidirectional]
+
+- ECS Service (OAuth server) -> VPC (main) [unidirectional]
+- RDS (identity DB) -> VPC (main) [unidirectional]
+- Redis (session cache) -> VPC (main) [unidirectional]
+
+# (No bidirectional edges for this system)

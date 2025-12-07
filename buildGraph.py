@@ -30,7 +30,45 @@ SYSTEMS = [
         "components_csv": "components_analytics.csv",
         "edges_csv": "edgesAnalyticsPipeline.csv",
     },
+
+    # --- New 7 Systems ---
+    {
+        "system_id": "billing_platform_01",
+        "components_csv": "components_billingplatform.csv",
+        "edges_csv": "edgesBillingPlatform.csv",
+    },
+    {
+        "system_id": "support_ticketing_01",
+        "components_csv": "components_supportticketing.csv",
+        "edges_csv": "edgesSupportTicketing.csv",
+    },
+    {
+        "system_id": "recommendation_service_01",
+        "components_csv": "components_recommendationservice.csv",
+        "edges_csv": "edgesRecommendationService.csv",
+    },
+    {
+        "system_id": "identity_platform_01",
+        "components_csv": "components_identityplatform.csv",
+        "edges_csv": "edgesIdentityPlatform.csv",
+    },
+    {
+        "system_id": "media_transcoding_01",
+        "components_csv": "components_mediapipeline.csv",
+        "edges_csv": "edgesMediaPipeline.csv",
+    },
+    {
+        "system_id": "ad_serving_platform_01",
+        "components_csv": "components_adplatform.csv",
+        "edges_csv": "edgesAdPlatform.csv",
+    },
+    {
+        "system_id": "partner_integration_hub_01",
+        "components_csv": "components_partnerhub.csv",
+        "edges_csv": "edgesPartnerHub.csv",
+    },
 ]
+
 
 
 # ------------- GRAPH & FEATURE HELPERS -----------------

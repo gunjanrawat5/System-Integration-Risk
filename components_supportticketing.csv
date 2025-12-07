@@ -1,0 +1,17 @@
+name
+Route 53
+CloudFront (support web)
+ALB (support app)
+ECS Service (support web app)
+RDS (tickets DB)
+DynamoDB (session store)
+SQS (ticket events queue)
+Lambda (ticket worker)
+Zendesk API (agent console SaaS)
+Salesforce API (CRM)
+Elasticsearch / OpenSearch (ticket search index)
+S3 (ticket attachments)
+SNS (ticket notifications)
+CloudWatch
+IAM
+VPC (main)

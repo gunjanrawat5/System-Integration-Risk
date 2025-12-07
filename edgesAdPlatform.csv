@@ -1,0 +1,27 @@
+source,target,relation
+Route 53,CloudFront (ads CDN),unidirectional
+CloudFront (ads CDN),ALB (ad API),unidirectional
+ALB (ad API),ECS Service (ad decision API),unidirectional
+ECS Service (ad decision API),RDS (campaign DB),unidirectional
+ECS Service (ad decision API),Redis (ad cache),unidirectional
+ECS Service (ad decision API),DynamoDB (realtime counters),unidirectional
+ECS Service (ad decision API),Third-Party Ad Exchange API,unidirectional
+Third-Party Ad Exchange API,ECS Service (ad decision API),unidirectional
+Kinesis (impression stream),Lambda (click tracker),unidirectional
+Lambda (click tracker),S3 (raw logs),unidirectional
+Lambda (click tracker),DynamoDB (realtime counters),unidirectional
+Lambda (aggregation worker),S3 (raw logs),unidirectional
+Lambda (aggregation worker),S3 (aggregated reports),unidirectional
+Lambda (aggregation worker),Redshift (ad analytics warehouse),unidirectional
+Lambda (aggregation worker),Elasticsearch / OpenSearch (ad search index),unidirectional
+ECS Service (ad decision API),CloudWatch,unidirectional
+Lambda (click tracker),CloudWatch,unidirectional
+Lambda (aggregation worker),CloudWatch,unidirectional
+ECS Service (ad decision API),IAM,unidirectional
+Lambda (click tracker),IAM,unidirectional
+Lambda (aggregation worker),IAM,unidirectional
+ECS Service (ad decision API),VPC (main),unidirectional
+RDS (campaign DB),VPC (main),unidirectional
+DynamoDB (realtime counters),VPC (main),unidirectional
+Redis (ad cache),VPC (main),unidirectional
+Redshift (ad analytics warehouse),VPC (main),unidirectional

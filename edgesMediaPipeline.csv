@@ -1,0 +1,24 @@
+source,target,relation
+API Gateway (upload),Lambda (upload pre-processor),unidirectional
+Lambda (upload pre-processor),S3 (raw uploads),unidirectional
+Lambda (upload pre-processor),RabbitMQ (encoding jobs queue),unidirectional
+RabbitMQ (encoding jobs queue),Encoding Farm (on-prem cluster),unidirectional
+Encoding Farm (on-prem cluster),S3 (raw uploads),unidirectional
+S3 (raw uploads),Elastic Transcoder / MediaConvert,unidirectional
+Elastic Transcoder / MediaConvert,S3 (transcoded media),unidirectional
+S3 (transcoded media),ECS Service (thumbnail generator),unidirectional
+ECS Service (thumbnail generator),S3 (transcoded media),unidirectional
+ECS Service (thumbnail generator),Lambda (metadata extractor),unidirectional
+Lambda (metadata extractor),DynamoDB (media metadata),unidirectional
+CloudFront (media CDN),S3 (transcoded media),unidirectional
+Lambda (upload pre-processor),CloudWatch,unidirectional
+ECS Service (thumbnail generator),CloudWatch,unidirectional
+Lambda (metadata extractor),CloudWatch,unidirectional
+Elastic Transcoder / MediaConvert,CloudWatch,unidirectional
+Lambda (upload pre-processor),IAM,unidirectional
+ECS Service (thumbnail generator),IAM,unidirectional
+Lambda (metadata extractor),IAM,unidirectional
+Elastic Transcoder / MediaConvert,IAM,unidirectional
+Lambda (upload pre-processor),VPC (main),unidirectional
+ECS Service (thumbnail generator),VPC (main),unidirectional
+DynamoDB (media metadata),VPC (main),unidirectional

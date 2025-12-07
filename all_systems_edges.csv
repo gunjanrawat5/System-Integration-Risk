@@ -133,3 +133,170 @@ Lambda (transform),Redshift (warehouse),unidirectional,analytics_pipeline_01
 Redshift (warehouse),Lambda (transform),unidirectional,analytics_pipeline_01
 CloudWatch,Lambda (transform),unidirectional,analytics_pipeline_01
 Lambda (transform),CloudWatch,unidirectional,analytics_pipeline_01
+Route 53,CloudFront (web),unidirectional,billing_platform_01
+CloudFront (web),ALB (app),unidirectional,billing_platform_01
+ALB (app),ECS Service (billing API),unidirectional,billing_platform_01
+ECS Service (billing API),RDS (billing DB),unidirectional,billing_platform_01
+ECS Service (billing API),DynamoDB (usage ledger),unidirectional,billing_platform_01
+ECS Service (billing API),Stripe API (payments SaaS),unidirectional,billing_platform_01
+ECS Service (billing API),Plaid API (bank linking),unidirectional,billing_platform_01
+ECS Service (billing API),SQS (billing jobs queue),unidirectional,billing_platform_01
+SQS (billing jobs queue),Lambda (invoice generator),unidirectional,billing_platform_01
+Lambda (invoice generator),S3 (invoice PDFs),unidirectional,billing_platform_01
+Lambda (invoice generator),SNS (billing notifications),unidirectional,billing_platform_01
+Lambda (payment reconciler),RDS (billing DB),unidirectional,billing_platform_01
+Lambda (payment reconciler),Stripe API (payments SaaS),unidirectional,billing_platform_01
+Lambda (payment reconciler),DynamoDB (usage ledger),unidirectional,billing_platform_01
+Stripe API (payments SaaS),Lambda (payment reconciler),unidirectional,billing_platform_01
+ECS Service (billing API),CloudWatch,unidirectional,billing_platform_01
+Lambda (invoice generator),CloudWatch,unidirectional,billing_platform_01
+Lambda (payment reconciler),CloudWatch,unidirectional,billing_platform_01
+ECS Service (billing API),Datadog Agent (metrics sidecar),unidirectional,billing_platform_01
+ECS Service (billing API),IAM,unidirectional,billing_platform_01
+Lambda (invoice generator),IAM,unidirectional,billing_platform_01
+Lambda (payment reconciler),IAM,unidirectional,billing_platform_01
+ECS Service (billing API),VPC (main),unidirectional,billing_platform_01
+RDS (billing DB),VPC (main),unidirectional,billing_platform_01
+DynamoDB (usage ledger),VPC (main),unidirectional,billing_platform_01
+Route 53,CloudFront (support web),unidirectional,support_ticketing_01
+CloudFront (support web),ALB (support app),unidirectional,support_ticketing_01
+ALB (support app),ECS Service (support web app),unidirectional,support_ticketing_01
+ECS Service (support web app),RDS (tickets DB),unidirectional,support_ticketing_01
+ECS Service (support web app),DynamoDB (session store),unidirectional,support_ticketing_01
+ECS Service (support web app),S3 (ticket attachments),unidirectional,support_ticketing_01
+ECS Service (support web app),SQS (ticket events queue),unidirectional,support_ticketing_01
+SQS (ticket events queue),Lambda (ticket worker),unidirectional,support_ticketing_01
+Lambda (ticket worker),RDS (tickets DB),unidirectional,support_ticketing_01
+Lambda (ticket worker),Elasticsearch / OpenSearch (ticket search index),unidirectional,support_ticketing_01
+Lambda (ticket worker),Zendesk API (agent console SaaS),unidirectional,support_ticketing_01
+Lambda (ticket worker),Salesforce API (CRM),unidirectional,support_ticketing_01
+Zendesk API (agent console SaaS),Lambda (ticket worker),unidirectional,support_ticketing_01
+ECS Service (support web app),SNS (ticket notifications),unidirectional,support_ticketing_01
+Lambda (ticket worker),SNS (ticket notifications),unidirectional,support_ticketing_01
+ECS Service (support web app),CloudWatch,unidirectional,support_ticketing_01
+Lambda (ticket worker),CloudWatch,unidirectional,support_ticketing_01
+ECS Service (support web app),IAM,unidirectional,support_ticketing_01
+Lambda (ticket worker),IAM,unidirectional,support_ticketing_01
+ECS Service (support web app),VPC (main),unidirectional,support_ticketing_01
+RDS (tickets DB),VPC (main),unidirectional,support_ticketing_01
+DynamoDB (session store),VPC (main),unidirectional,support_ticketing_01
+Elasticsearch / OpenSearch (ticket search index),VPC (main),unidirectional,support_ticketing_01
+Segment (event collector SaaS),Kinesis (clickstream events),unidirectional,recommendation_service_01
+Segment (event collector SaaS),MSK / Kafka Cluster (behavior stream),unidirectional,recommendation_service_01
+Kinesis (clickstream events),Lambda (feature enricher),unidirectional,recommendation_service_01
+MSK / Kafka Cluster (behavior stream),Lambda (feature enricher),unidirectional,recommendation_service_01
+Lambda (feature enricher),S3 (user features store),unidirectional,recommendation_service_01
+Lambda (feature enricher),DynamoDB (user profiles),unidirectional,recommendation_service_01
+Lambda (feature enricher),Elasticsearch / OpenSearch (reco logs index),unidirectional,recommendation_service_01
+API Gateway (recommendations),Lambda (recommendation API),unidirectional,recommendation_service_01
+Lambda (recommendation API),Redis (feature cache),unidirectional,recommendation_service_01
+Lambda (recommendation API),DynamoDB (user profiles),unidirectional,recommendation_service_01
+Lambda (recommendation API),SageMaker Endpoint (ranking model),unidirectional,recommendation_service_01
+SageMaker Endpoint (ranking model),S3 (model artifacts),unidirectional,recommendation_service_01
+Lambda (recommendation API),CloudWatch,unidirectional,recommendation_service_01
+Lambda (feature enricher),CloudWatch,unidirectional,recommendation_service_01
+SageMaker Endpoint (ranking model),CloudWatch,unidirectional,recommendation_service_01
+Lambda (recommendation API),IAM,unidirectional,recommendation_service_01
+Lambda (feature enricher),IAM,unidirectional,recommendation_service_01
+SageMaker Endpoint (ranking model),IAM,unidirectional,recommendation_service_01
+Lambda (recommendation API),VPC (main),unidirectional,recommendation_service_01
+Lambda (feature enricher),VPC (main),unidirectional,recommendation_service_01
+DynamoDB (user profiles),VPC (main),unidirectional,recommendation_service_01
+Redis (feature cache),VPC (main),unidirectional,recommendation_service_01
+Elasticsearch / OpenSearch (reco logs index),VPC (main),unidirectional,recommendation_service_01
+Route 53,CloudFront (auth UI),unidirectional,identity_platform_01
+CloudFront (auth UI),ALB (auth service),unidirectional,identity_platform_01
+ALB (auth service),ECS Service (OAuth server),unidirectional,identity_platform_01
+ECS Service (OAuth server),RDS (identity DB),unidirectional,identity_platform_01
+ECS Service (OAuth server),Redis (session cache),unidirectional,identity_platform_01
+ECS Service (OAuth server),Cognito (user pool),unidirectional,identity_platform_01
+ECS Service (OAuth server),Okta IdP (enterprise SSO),unidirectional,identity_platform_01
+Okta IdP (enterprise SSO),ECS Service (OAuth server),unidirectional,identity_platform_01
+ECS Service (OAuth server),LDAP Directory (on-prem),unidirectional,identity_platform_01
+LDAP Directory (on-prem),Lambda (provisioning sync),unidirectional,identity_platform_01
+Lambda (provisioning sync),SQS (provisioning queue),unidirectional,identity_platform_01
+SQS (provisioning queue),Lambda (provisioning sync),unidirectional,identity_platform_01
+Lambda (provisioning sync),Cognito (user pool),unidirectional,identity_platform_01
+Lambda (provisioning sync),RDS (identity DB),unidirectional,identity_platform_01
+Lambda (provisioning sync),SNS (security alerts),unidirectional,identity_platform_01
+ECS Service (OAuth server),CloudWatch,unidirectional,identity_platform_01
+Lambda (provisioning sync),CloudWatch,unidirectional,identity_platform_01
+Cognito (user pool),CloudWatch,unidirectional,identity_platform_01
+ECS Service (OAuth server),IAM,unidirectional,identity_platform_01
+Lambda (provisioning sync),IAM,unidirectional,identity_platform_01
+Cognito (user pool),IAM,unidirectional,identity_platform_01
+ECS Service (OAuth server),VPC (main),unidirectional,identity_platform_01
+RDS (identity DB),VPC (main),unidirectional,identity_platform_01
+Redis (session cache),VPC (main),unidirectional,identity_platform_01
+API Gateway (upload),Lambda (upload pre-processor),unidirectional,media_transcoding_01
+Lambda (upload pre-processor),S3 (raw uploads),unidirectional,media_transcoding_01
+Lambda (upload pre-processor),RabbitMQ (encoding jobs queue),unidirectional,media_transcoding_01
+RabbitMQ (encoding jobs queue),Encoding Farm (on-prem cluster),unidirectional,media_transcoding_01
+Encoding Farm (on-prem cluster),S3 (raw uploads),unidirectional,media_transcoding_01
+S3 (raw uploads),Elastic Transcoder / MediaConvert,unidirectional,media_transcoding_01
+Elastic Transcoder / MediaConvert,S3 (transcoded media),unidirectional,media_transcoding_01
+S3 (transcoded media),ECS Service (thumbnail generator),unidirectional,media_transcoding_01
+ECS Service (thumbnail generator),S3 (transcoded media),unidirectional,media_transcoding_01
+ECS Service (thumbnail generator),Lambda (metadata extractor),unidirectional,media_transcoding_01
+Lambda (metadata extractor),DynamoDB (media metadata),unidirectional,media_transcoding_01
+CloudFront (media CDN),S3 (transcoded media),unidirectional,media_transcoding_01
+Lambda (upload pre-processor),CloudWatch,unidirectional,media_transcoding_01
+ECS Service (thumbnail generator),CloudWatch,unidirectional,media_transcoding_01
+Lambda (metadata extractor),CloudWatch,unidirectional,media_transcoding_01
+Elastic Transcoder / MediaConvert,CloudWatch,unidirectional,media_transcoding_01
+Lambda (upload pre-processor),IAM,unidirectional,media_transcoding_01
+ECS Service (thumbnail generator),IAM,unidirectional,media_transcoding_01
+Lambda (metadata extractor),IAM,unidirectional,media_transcoding_01
+Elastic Transcoder / MediaConvert,IAM,unidirectional,media_transcoding_01
+Lambda (upload pre-processor),VPC (main),unidirectional,media_transcoding_01
+ECS Service (thumbnail generator),VPC (main),unidirectional,media_transcoding_01
+DynamoDB (media metadata),VPC (main),unidirectional,media_transcoding_01
+Route 53,CloudFront (ads CDN),unidirectional,ad_serving_platform_01
+CloudFront (ads CDN),ALB (ad API),unidirectional,ad_serving_platform_01
+ALB (ad API),ECS Service (ad decision API),unidirectional,ad_serving_platform_01
+ECS Service (ad decision API),RDS (campaign DB),unidirectional,ad_serving_platform_01
+ECS Service (ad decision API),Redis (ad cache),unidirectional,ad_serving_platform_01
+ECS Service (ad decision API),DynamoDB (realtime counters),unidirectional,ad_serving_platform_01
+ECS Service (ad decision API),Third-Party Ad Exchange API,unidirectional,ad_serving_platform_01
+Third-Party Ad Exchange API,ECS Service (ad decision API),unidirectional,ad_serving_platform_01
+Kinesis (impression stream),Lambda (click tracker),unidirectional,ad_serving_platform_01
+Lambda (click tracker),S3 (raw logs),unidirectional,ad_serving_platform_01
+Lambda (click tracker),DynamoDB (realtime counters),unidirectional,ad_serving_platform_01
+Lambda (aggregation worker),S3 (raw logs),unidirectional,ad_serving_platform_01
+Lambda (aggregation worker),S3 (aggregated reports),unidirectional,ad_serving_platform_01
+Lambda (aggregation worker),Redshift (ad analytics warehouse),unidirectional,ad_serving_platform_01
+Lambda (aggregation worker),Elasticsearch / OpenSearch (ad search index),unidirectional,ad_serving_platform_01
+ECS Service (ad decision API),CloudWatch,unidirectional,ad_serving_platform_01
+Lambda (click tracker),CloudWatch,unidirectional,ad_serving_platform_01
+Lambda (aggregation worker),CloudWatch,unidirectional,ad_serving_platform_01
+ECS Service (ad decision API),IAM,unidirectional,ad_serving_platform_01
+Lambda (click tracker),IAM,unidirectional,ad_serving_platform_01
+Lambda (aggregation worker),IAM,unidirectional,ad_serving_platform_01
+ECS Service (ad decision API),VPC (main),unidirectional,ad_serving_platform_01
+RDS (campaign DB),VPC (main),unidirectional,ad_serving_platform_01
+DynamoDB (realtime counters),VPC (main),unidirectional,ad_serving_platform_01
+Redis (ad cache),VPC (main),unidirectional,ad_serving_platform_01
+Redshift (ad analytics warehouse),VPC (main),unidirectional,ad_serving_platform_01
+API Gateway (partner),Lambda (webhook router),unidirectional,partner_integration_hub_01
+Lambda (webhook router),SQS (incoming webhooks),unidirectional,partner_integration_hub_01
+Lambda (webhook router),CloudWatch,unidirectional,partner_integration_hub_01
+Lambda (webhook router),IAM,unidirectional,partner_integration_hub_01
+Lambda (webhook router),VPC (main),unidirectional,partner_integration_hub_01
+SQS (incoming webhooks),Lambda (transformation worker),unidirectional,partner_integration_hub_01
+Lambda (transformation worker),EventBridge (internal events),unidirectional,partner_integration_hub_01
+Lambda (transformation worker),SQS (outgoing webhooks),unidirectional,partner_integration_hub_01
+Lambda (transformation worker),S3 (dead-letter payloads),unidirectional,partner_integration_hub_01
+Lambda (transformation worker),Postgres (partner audit DB),unidirectional,partner_integration_hub_01
+Lambda (transformation worker),Third-Party CRM API,unidirectional,partner_integration_hub_01
+Lambda (transformation worker),Third-Party ERP API,unidirectional,partner_integration_hub_01
+Lambda (transformation worker),CloudWatch,unidirectional,partner_integration_hub_01
+Lambda (transformation worker),IAM,unidirectional,partner_integration_hub_01
+Lambda (transformation worker),VPC (main),unidirectional,partner_integration_hub_01
+EventBridge (internal events),ECS Service (mapping config API),unidirectional,partner_integration_hub_01
+EventBridge (internal events),Lambda (webhook router),unidirectional,partner_integration_hub_01
+ECS Service (mapping config API),DynamoDB (partner configs),unidirectional,partner_integration_hub_01
+ECS Service (mapping config API),Postgres (partner audit DB),unidirectional,partner_integration_hub_01
+ECS Service (mapping config API),CloudWatch,unidirectional,partner_integration_hub_01
+ECS Service (mapping config API),IAM,unidirectional,partner_integration_hub_01
+ECS Service (mapping config API),VPC (main),unidirectional,partner_integration_hub_01
+Postgres (partner audit DB),VPC (main),unidirectional,partner_integration_hub_01

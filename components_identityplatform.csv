@@ -1,0 +1,16 @@
+name
+Route 53
+CloudFront (auth UI)
+ALB (auth service)
+ECS Service (OAuth server)
+RDS (identity DB)
+Redis (session cache)
+Cognito (user pool)
+Okta IdP (enterprise SSO)
+LDAP Directory (on-prem)
+Lambda (provisioning sync)
+SQS (provisioning queue)
+SNS (security alerts)
+CloudWatch
+IAM
+VPC (main)

@@ -1,0 +1,15 @@
+name
+API Gateway (upload)
+Lambda (upload pre-processor)
+S3 (raw uploads)
+S3 (transcoded media)
+Elastic Transcoder / MediaConvert
+ECS Service (thumbnail generator)
+Lambda (metadata extractor)
+DynamoDB (media metadata)
+CloudFront (media CDN)
+Encoding Farm (on-prem cluster)
+RabbitMQ (encoding jobs queue)
+CloudWatch
+IAM
+VPC (main)

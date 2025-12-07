@@ -1,0 +1,16 @@
+name
+API Gateway (recommendations)
+Lambda (recommendation API)
+Kinesis (clickstream events)
+MSK / Kafka Cluster (behavior stream)
+Lambda (feature enricher)
+S3 (user features store)
+DynamoDB (user profiles)
+SageMaker Endpoint (ranking model)
+Redis (feature cache)
+S3 (model artifacts)
+CloudWatch
+IAM
+VPC (main)
+Elasticsearch / OpenSearch (reco logs index)
+Segment (event collector SaaS)

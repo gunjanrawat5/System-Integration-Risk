@@ -1,0 +1,16 @@
+name
+API Gateway (partner)
+Lambda (webhook router)
+Lambda (transformation worker)
+SQS (incoming webhooks)
+SQS (outgoing webhooks)
+EventBridge (internal events)
+ECS Service (mapping config API)
+DynamoDB (partner configs)
+Postgres (partner audit DB)
+Third-Party CRM API
+Third-Party ERP API
+S3 (dead-letter payloads)
+CloudWatch
+IAM
+VPC (main)

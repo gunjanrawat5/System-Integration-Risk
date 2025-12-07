@@ -1,0 +1,24 @@
+source,target,relation
+Route 53,CloudFront (support web),unidirectional
+CloudFront (support web),ALB (support app),unidirectional
+ALB (support app),ECS Service (support web app),unidirectional
+ECS Service (support web app),RDS (tickets DB),unidirectional
+ECS Service (support web app),DynamoDB (session store),unidirectional
+ECS Service (support web app),S3 (ticket attachments),unidirectional
+ECS Service (support web app),SQS (ticket events queue),unidirectional
+SQS (ticket events queue),Lambda (ticket worker),unidirectional
+Lambda (ticket worker),RDS (tickets DB),unidirectional
+Lambda (ticket worker),Elasticsearch / OpenSearch (ticket search index),unidirectional
+Lambda (ticket worker),Zendesk API (agent console SaaS),unidirectional
+Lambda (ticket worker),Salesforce API (CRM),unidirectional
+Zendesk API (agent console SaaS),Lambda (ticket worker),unidirectional
+ECS Service (support web app),SNS (ticket notifications),unidirectional
+Lambda (ticket worker),SNS (ticket notifications),unidirectional
+ECS Service (support web app),CloudWatch,unidirectional
+Lambda (ticket worker),CloudWatch,unidirectional
+ECS Service (support web app),IAM,unidirectional
+Lambda (ticket worker),IAM,unidirectional
+ECS Service (support web app),VPC (main),unidirectional
+RDS (tickets DB),VPC (main),unidirectional
+DynamoDB (session store),VPC (main),unidirectional
+Elasticsearch / OpenSearch (ticket search index),VPC (main),unidirectional

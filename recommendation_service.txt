@@ -1,0 +1,54 @@
+System: Personalization & Recommendation Engine
+System ID: recommendation_engine_01
+
+Components:
+- API Gateway (recommendations)
+- Lambda (recommendation API)
+- Kinesis (clickstream events)
+- MSK / Kafka Cluster (behavior stream)           
+- Lambda (feature enricher)
+- S3 (user features store)
+- DynamoDB (user profiles)
+- SageMaker Endpoint (ranking model)
+- Redis (feature cache)                           
+- S3 (model artifacts)
+- CloudWatch
+- IAM
+- VPC (main)
+- Elasticsearch / OpenSearch (reco logs index)   
+- Segment (event collector SaaS)                  
+
+Edges:
+- Segment (event collector SaaS) -> Kinesis (clickstream events) [unidirectional]
+- Segment (event collector SaaS) -> MSK / Kafka Cluster (behavior stream) [unidirectional]
+
+- Kinesis (clickstream events) -> Lambda (feature enricher) [unidirectional]
+- MSK / Kafka Cluster (behavior stream) -> Lambda (feature enricher) [unidirectional]
+
+- Lambda (feature enricher) -> S3 (user features store) [unidirectional]
+- Lambda (feature enricher) -> DynamoDB (user profiles) [unidirectional]
+- Lambda (feature enricher) -> Elasticsearch / OpenSearch (reco logs index) [unidirectional]
+
+- API Gateway (recommendations) -> Lambda (recommendation API) [unidirectional]
+
+- Lambda (recommendation API) -> Redis (feature cache) [unidirectional]
+- Lambda (recommendation API) -> DynamoDB (user profiles) [unidirectional]
+- Lambda (recommendation API) -> SageMaker Endpoint (ranking model) [unidirectional]
+
+- SageMaker Endpoint (ranking model) -> S3 (model artifacts) [unidirectional]
+
+- Lambda (recommendation API) -> CloudWatch [unidirectional]
+- Lambda (feature enricher) -> CloudWatch [unidirectional]
+- SageMaker Endpoint (ranking model) -> CloudWatch [unidirectional]
+
+- Lambda (recommendation API) -> IAM [unidirectional]
+- Lambda (feature enricher) -> IAM [unidirectional]
+- SageMaker Endpoint (ranking model) -> IAM [unidirectional]
+
+- Lambda (recommendation API) -> VPC (main) [unidirectional]
+- Lambda (feature enricher) -> VPC (main) [unidirectional]
+- DynamoDB (user profiles) -> VPC (main) [unidirectional]
+- Redis (feature cache) -> VPC (main) [unidirectional]
+- Elasticsearch / OpenSearch (reco logs index) -> VPC (main) [unidirectional]
+
+
