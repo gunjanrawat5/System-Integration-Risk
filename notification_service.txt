@@ -1,0 +1,40 @@
+System: Notification Service 01
+
+Components:
+- API Gateway (notifications admin)
+- Lambda (notification dispatcher)
+- SNS (notifications topic)
+- SQS (email queue)
+- SES (email service)
+- DynamoDB (user preferences)
+- S3 (templates)
+- CloudWatch
+- IAM
+- VPC (main)
+
+Edges:
+- API Gateway (notifications admin) -> Lambda (notification dispatcher) [unidirectional]
+
+- Lambda (notification dispatcher) -> SNS (notifications topic) [unidirectional]
+- Lambda (notification dispatcher) -> SQS (email queue) [unidirectional]
+- Lambda (notification dispatcher) -> DynamoDB (user preferences) [unidirectional]
+- Lambda (notification dispatcher) -> S3 (templates) [unidirectional]
+
+- SQS (email queue) -> Lambda (notification dispatcher) [unidirectional]
+- SNS (notifications topic) -> Lambda (notification dispatcher) [unidirectional]
+
+- Lambda (notification dispatcher) -> SES (email service) [unidirectional]
+
+- Lambda (notification dispatcher) -> CloudWatch [unidirectional]
+- API Gateway (notifications admin) -> CloudWatch [unidirectional]
+
+- Lambda (notification dispatcher) -> IAM [unidirectional]
+- API Gateway (notifications admin) -> IAM [unidirectional]
+
+- Lambda (notification dispatcher) -> VPC (main) [unidirectional]
+- SES (email service) -> VPC (main) [unidirectional]
+
+# Bidirectional edges
+- Lambda (notification dispatcher) <-> DynamoDB (user preferences) [bidirectional]
+- Lambda (notification dispatcher) <-> S3 (templates) [bidirectional]
+- CloudWatch <-> Lambda (notification dispatcher) [bidirectional]

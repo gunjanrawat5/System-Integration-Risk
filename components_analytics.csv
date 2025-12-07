@@ -1,0 +1,12 @@
+name
+Kinesis (raw events)
+Lambda (transform)
+S3 (raw data lake)
+S3 (curated data)
+Glue Data Catalog
+Athena (ad hoc queries)
+Redshift (warehouse)
+QuickSight (dashboards)
+CloudWatch
+IAM
+VPC (main)

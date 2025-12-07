@@ -1,0 +1,11 @@
+name
+API Gateway (notifications admin)
+Lambda (notification dispatcher)
+SNS (notifications topic)
+SQS (email queue)
+SES (email service)
+DynamoDB (user preferences)
+S3 (templates)
+CloudWatch
+IAM
+VPC (main)

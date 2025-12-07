@@ -1,0 +1,16 @@
+name
+Route 53
+CloudFront (web)
+AWS WAF
+ALB (web)
+ECS Service (orders)
+RDS (orders DB)
+ElastiCache (menu cache)
+S3 (restaurant images)
+SQS (order events)
+SNS (courier notifications)
+Lambda (order worker)
+Cognito (users)
+CloudWatch
+IAM
+VPC (main)

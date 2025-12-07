@@ -1,0 +1,21 @@
+source,target,relation
+API Gateway (notifications admin),Lambda (notification dispatcher),unidirectional
+Lambda (notification dispatcher),SNS (notifications topic),unidirectional
+Lambda (notification dispatcher),SQS (email queue),unidirectional
+Lambda (notification dispatcher),DynamoDB (user preferences),unidirectional
+Lambda (notification dispatcher),S3 (templates),unidirectional
+SQS (email queue),Lambda (notification dispatcher),unidirectional
+SNS (notifications topic),Lambda (notification dispatcher),unidirectional
+Lambda (notification dispatcher),SES (email service),unidirectional
+Lambda (notification dispatcher),CloudWatch,unidirectional
+API Gateway (notifications admin),CloudWatch,unidirectional
+Lambda (notification dispatcher),IAM,unidirectional
+API Gateway (notifications admin),IAM,unidirectional
+Lambda (notification dispatcher),VPC (main),unidirectional
+SES (email service),VPC (main),unidirectional
+Lambda (notification dispatcher),DynamoDB (user preferences),unidirectional
+DynamoDB (user preferences),Lambda (notification dispatcher),unidirectional
+Lambda (notification dispatcher),S3 (templates),unidirectional
+S3 (templates),Lambda (notification dispatcher),unidirectional
+CloudWatch,Lambda (notification dispatcher),unidirectional
+Lambda (notification dispatcher),CloudWatch,unidirectional

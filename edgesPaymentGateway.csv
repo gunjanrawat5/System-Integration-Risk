@@ -1,0 +1,32 @@
+source,target,relation
+Route 53,CloudFront (web),unidirectional
+CloudFront (web),AWS WAF,unidirectional
+AWS WAF,API Gateway (public),unidirectional
+API Gateway (public),Lambda (payments),unidirectional
+API Gateway (public),IAM,unidirectional
+IAM,API Gateway (public),unidirectional
+Lambda (payments),DynamoDB (transactions),unidirectional
+Lambda (payments),SQS (settlement queue),unidirectional
+Lambda (payments),SNS (fraud alerts),unidirectional
+Lambda (payments),KMS (keys),unidirectional
+KMS (keys),Lambda (payments),unidirectional
+SQS (settlement queue),Lambda (settlement),unidirectional
+Lambda (settlement),RDS (reporting),unidirectional
+Lambda (settlement),KMS (keys),unidirectional
+Lambda (settlement),VPC (main),unidirectional
+VPC (main),Lambda (settlement),unidirectional
+CloudFront (web),S3 (logs),unidirectional
+API Gateway (public),S3 (logs),unidirectional
+AWS WAF,S3 (logs),unidirectional
+Lambda (payments),CloudWatch,unidirectional
+Lambda (settlement),CloudWatch,unidirectional
+API Gateway (public),CloudWatch,unidirectional
+CloudFront (web),CloudWatch,unidirectional
+CloudWatch,Lambda (payments),unidirectional
+Lambda (payments),CloudWatch,unidirectional
+Lambda (payments),IAM,unidirectional
+Lambda (settlement),IAM,unidirectional
+API Gateway (public),IAM,unidirectional
+Lambda (payments),VPC (main),unidirectional
+Lambda (settlement),VPC (main),unidirectional
+RDS (reporting),VPC (main),unidirectional

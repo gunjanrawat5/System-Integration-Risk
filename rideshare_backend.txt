@@ -1,0 +1,54 @@
+System: Ride-Sharing Backend 01
+
+Components:
+- API Gateway (mobile)
+- Lambda (trip management)
+- Lambda (pricing)
+- DynamoDB (trips)
+- RDS (billing)
+- ElastiCache (surge cache)
+- Kinesis (event stream)
+- SQS (trip updates)
+- SNS (driver alerts)
+- S3 (logs)
+- CloudWatch
+- IAM
+- VPC (main)
+
+Edges:
+- API Gateway (mobile) -> Lambda (trip management) [unidirectional]
+- API Gateway (mobile) -> Lambda (pricing) [unidirectional]
+
+- Lambda (trip management) -> DynamoDB (trips) [unidirectional]
+- Lambda (trip management) -> SQS (trip updates) [unidirectional]
+- Lambda (trip management) -> Kinesis (event stream) [unidirectional]
+
+- Lambda (pricing) -> ElastiCache (surge cache) [unidirectional]
+- Lambda (pricing) -> DynamoDB (trips) [unidirectional]
+
+- SQS (trip updates) -> Lambda (trip management) [unidirectional]
+- Kinesis (event stream) -> Lambda (trip management) [unidirectional]
+
+- Lambda (trip management) -> SNS (driver alerts) [unidirectional]
+- Lambda (trip management) -> RDS (billing) [unidirectional]
+
+- Lambda (trip management) -> CloudWatch [unidirectional]
+- Lambda (pricing) -> CloudWatch [unidirectional]
+- API Gateway (mobile) -> CloudWatch [unidirectional]
+- Kinesis (event stream) -> CloudWatch [unidirectional]
+
+- Lambda (trip management) -> S3 (logs) [unidirectional]
+- API Gateway (mobile) -> S3 (logs) [unidirectional]
+
+- Lambda (trip management) -> IAM [unidirectional]
+- Lambda (pricing) -> IAM [unidirectional]
+- API Gateway (mobile) -> IAM [unidirectional]
+
+- Lambda (trip management) -> VPC (main) [unidirectional]
+- Lambda (pricing) -> VPC (main) [unidirectional]
+- RDS (billing) -> VPC (main) [unidirectional]
+
+# Bidirectional edges
+- Lambda (trip management) <-> DynamoDB (trips) [bidirectional]
+- Lambda (trip management) <-> RDS (billing) [bidirectional]
+- CloudWatch <-> Lambda (trip management) [bidirectional]

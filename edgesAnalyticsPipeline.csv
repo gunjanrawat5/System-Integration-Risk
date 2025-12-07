@@ -1,0 +1,26 @@
+source,target,relation
+Kinesis (raw events),Lambda (transform),unidirectional
+Lambda (transform),S3 (raw data lake),unidirectional
+Lambda (transform),S3 (curated data),unidirectional
+Lambda (transform),Redshift (warehouse),unidirectional
+S3 (raw data lake),Glue Data Catalog,unidirectional
+S3 (curated data),Glue Data Catalog,unidirectional
+Glue Data Catalog,Athena (ad hoc queries),unidirectional
+Glue Data Catalog,Redshift (warehouse),unidirectional
+Redshift (warehouse),QuickSight (dashboards),unidirectional
+Athena (ad hoc queries),QuickSight (dashboards),unidirectional
+Kinesis (raw events),CloudWatch,unidirectional
+Lambda (transform),CloudWatch,unidirectional
+Redshift (warehouse),CloudWatch,unidirectional
+Lambda (transform),IAM,unidirectional
+Redshift (warehouse),IAM,unidirectional
+Athena (ad hoc queries),IAM,unidirectional
+Lambda (transform),VPC (main),unidirectional
+Redshift (warehouse),VPC (main),unidirectional
+Athena (ad hoc queries),VPC (main),unidirectional
+Lambda (transform),S3 (raw data lake),unidirectional
+S3 (raw data lake),Lambda (transform),unidirectional
+Lambda (transform),Redshift (warehouse),unidirectional
+Redshift (warehouse),Lambda (transform),unidirectional
+CloudWatch,Lambda (transform),unidirectional
+Lambda (transform),CloudWatch,unidirectional

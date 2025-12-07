@@ -22,15 +22,19 @@ Edges:
 - CloudFront (web) -> AWS WAF [unidirectional]
 - AWS WAF -> API Gateway (public) [unidirectional]
 - API Gateway (public) -> Lambda (payments) [unidirectional]
+- API Gateway (public) <-> IAM [bidirectional]
+
 
 - Lambda (payments) -> DynamoDB (transactions) [unidirectional]
 - Lambda (payments) -> SQS (settlement queue) [unidirectional]
 - Lambda (payments) -> SNS (fraud alerts) [unidirectional]
-- Lambda (payments) -> KMS (keys) [unidirectional]
+- Lambda (payments) <-> KMS (keys) [bidirectional]
 
 - SQS (settlement queue) -> Lambda (settlement) [unidirectional]
 - Lambda (settlement) -> RDS (reporting) [unidirectional]
 - Lambda (settlement) -> KMS (keys) [unidirectional]
+- Lambda (settlement) <-> VPC (main) [bidirectional]
+
 
 - CloudFront (web) -> S3 (logs) [unidirectional]
 - API Gateway (public) -> S3 (logs) [unidirectional]
@@ -40,6 +44,8 @@ Edges:
 - Lambda (settlement) -> CloudWatch [unidirectional]
 - API Gateway (public) -> CloudWatch [unidirectional]
 - CloudFront (web) -> CloudWatch [unidirectional]
+- CloudWatch <-> Lambda (payments) [bidirectional]
+
 
 - Lambda (payments) -> IAM [unidirectional]
 - Lambda (settlement) -> IAM [unidirectional]

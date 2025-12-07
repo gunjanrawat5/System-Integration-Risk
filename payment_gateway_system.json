@@ -1,0 +1,176 @@
+{
+  "components": [
+    "Route 53",
+    "CloudFront (web)",
+    "AWS WAF",
+    "API Gateway (public)",
+    "Lambda (payments)",
+    "Lambda (settlement)",
+    "DynamoDB (transactions)",
+    "RDS (reporting)",
+    "SQS (settlement queue)",
+    "SNS (fraud alerts)",
+    "KMS (keys)",
+    "CloudWatch",
+    "IAM",
+    "S3 (logs)",
+    "VPC (main)"
+  ],
+  "edges": [
+    {
+      "source": "Route 53",
+      "target": "CloudFront (web)",
+      "relation": "unidirectional"
+    },
+    {
+      "source": "CloudFront (web)",
+      "target": "AWS WAF",
+      "relation": "unidirectional"
+    },
+    {
+      "source": "AWS WAF",
+      "target": "API Gateway (public)",
+      "relation": "unidirectional"
+    },
+    {
+      "source": "API Gateway (public)",
+      "target": "Lambda (payments)",
+      "relation": "unidirectional"
+    },
+    {
+      "source": "API Gateway (public)",
+      "target": "IAM",
+      "relation": "unidirectional"
+    },
+    {
+      "source": "IAM",
+      "target": "API Gateway (public)",
+      "relation": "unidirectional"
+    },
+    {
+      "source": "Lambda (payments)",
+      "target": "DynamoDB (transactions)",
+      "relation": "unidirectional"
+    },
+    {
+      "source": "Lambda (payments)",
+      "target": "SQS (settlement queue)",
+      "relation": "unidirectional"
+    },
+    {
+      "source": "Lambda (payments)",
+      "target": "SNS (fraud alerts)",
+      "relation": "unidirectional"
+    },
+    {
+      "source": "Lambda (payments)",
+      "target": "KMS (keys)",
+      "relation": "unidirectional"
+    },
+    {
+      "source": "KMS (keys)",
+      "target": "Lambda (payments)",
+      "relation": "unidirectional"
+    },
+    {
+      "source": "SQS (settlement queue)",
+      "target": "Lambda (settlement)",
+      "relation": "unidirectional"
+    },
+    {
+      "source": "Lambda (settlement)",
+      "target": "RDS (reporting)",
+      "relation": "unidirectional"
+    },
+    {
+      "source": "Lambda (settlement)",
+      "target": "KMS (keys)",
+      "relation": "unidirectional"
+    },
+    {
+      "source": "Lambda (settlement)",
+      "target": "VPC (main)",
+      "relation": "unidirectional"
+    },
+    {
+      "source": "VPC (main)",
+      "target": "Lambda (settlement)",
+      "relation": "unidirectional"
+    },
+    {
+      "source": "CloudFront (web)",
+      "target": "S3 (logs)",
+      "relation": "unidirectional"
+    },
+    {
+      "source": "API Gateway (public)",
+      "target": "S3 (logs)",
+      "relation": "unidirectional"
+    },
+    {
+      "source": "AWS WAF",
+      "target": "S3 (logs)",
+      "relation": "unidirectional"
+    },
+    {
+      "source": "Lambda (payments)",
+      "target": "CloudWatch",
+      "relation": "unidirectional"
+    },
+    {
+      "source": "Lambda (settlement)",
+      "target": "CloudWatch",
+      "relation": "unidirectional"
+    },
+    {
+      "source": "API Gateway (public)",
+      "target": "CloudWatch",
+      "relation": "unidirectional"
+    },
+    {
+      "source": "CloudFront (web)",
+      "target": "CloudWatch",
+      "relation": "unidirectional"
+    },
+    {
+      "source": "CloudWatch",
+      "target": "Lambda (payments)",
+      "relation": "unidirectional"
+    },
+    {
+      "source": "Lambda (payments)",
+      "target": "CloudWatch",
+      "relation": "unidirectional"
+    },
+    {
+      "source": "Lambda (payments)",
+      "target": "IAM",
+      "relation": "unidirectional"
+    },
+    {
+      "source": "Lambda (settlement)",
+      "target": "IAM",
+      "relation": "unidirectional"
+    },
+    {
+      "source": "API Gateway (public)",
+      "target": "IAM",
+      "relation": "unidirectional"
+    },
+    {
+      "source": "Lambda (payments)",
+      "target": "VPC (main)",
+      "relation": "unidirectional"
+    },
+    {
+      "source": "Lambda (settlement)",
+      "target": "VPC (main)",
+      "relation": "unidirectional"
+    },
+    {
+      "source": "RDS (reporting)",
+      "target": "VPC (main)",
+      "relation": "unidirectional"
+    }
+  ]
+}

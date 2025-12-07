@@ -1,4 +1,4 @@
-import json
+import csv
 import re
 
 def parse_system_doc(path: str):
@@ -10,16 +10,18 @@ def parse_system_doc(path: str):
 
     section = None  # None | "components" | "edges"
 
-    # Regex for edge lines: "- A -> B [relation]"
-    edge_pattern = re.compile(r"^- (.+?) -> (.+?) \[(.+?)\]\s*$")
+    # Edge patterns:
+    # 1) "- A -> B [relation]"
+    # 2) "- A <-> B [relation]"  (for bidirectional)
+    arrow_uni_pattern = re.compile(r"^- (.+?) -> (.+?) \[(.+?)\]\s*$")
+    arrow_bi_pattern  = re.compile(r"^- (.+?) \<\-\> (.+?) \[(.+?)\]\s*$")
 
     for raw in lines:
         line = raw.strip()
-
         if not line:
-            continue  # skip empty lines
+            continue
 
-        # Detect sections
+        # Section headers
         if line.startswith("Components:"):
             section = "components"
             continue
@@ -27,36 +29,88 @@ def parse_system_doc(path: str):
             section = "edges"
             continue
 
-        # Parse components
+        # Components
         if section == "components" and line.startswith("- "):
             comp_name = line[2:].strip()
             if comp_name:
                 components.append(comp_name)
             continue
 
-        # Parse edges
+        # Edges
         if section == "edges" and line.startswith("- "):
-            m = edge_pattern.match(line)
-            if not m:
-                raise ValueError(f"Cannot parse edge line: {line}")
-            source, target, relation = m.groups()
-            edges.append({
-                "source": source.strip(),
-                "target": target.strip(),
-                "relation": relation.strip()
-            })
+            # Try bidirectional with "<->"
+            m_bi = arrow_bi_pattern.match(line)
+            if m_bi:
+                source, target, relation = m_bi.groups()
+                relation = relation.strip().lower()
 
-    return {
-        "components": components,
-        "edges": edges
-    }
+                # For bidirectional, create two unidirectional edges
+                edges.append({
+                    "source": source.strip(),
+                    "target": target.strip(),
+                    "relation": "unidirectional"
+                })
+                edges.append({
+                    "source": target.strip(),
+                    "target": source.strip(),
+                    "relation": "unidirectional"
+                })
+                continue
+
+            # Normal "A -> B [relation]" pattern
+            m_uni = arrow_uni_pattern.match(line)
+            if not m_uni:
+                raise ValueError(f"Cannot parse edge line: {line}")
+
+            source, target, relation = m_uni.groups()
+            relation = relation.strip().lower()
+
+            if relation == "bidirectional":
+                # Expand to two directed edges
+                edges.append({
+                    "source": source.strip(),
+                    "target": target.strip(),
+                    "relation": "unidirectional"
+                })
+                edges.append({
+                    "source": target.strip(),
+                    "target": source.strip(),
+                    "relation": "unidirectional"
+                })
+            else:
+                edges.append({
+                    "source": source.strip(),
+                    "target": target.strip(),
+                    "relation": relation
+                })
+
+    return components, edges
+
+
+def write_csvs(components, edges,
+               components_path="components.csv",
+               edges_path="edges.csv"):
+    # Components CSV: name
+    with open(components_path, "w", newline="", encoding="utf-8") as f:
+        writer = csv.writer(f)
+        writer.writerow(["name"])
+        for comp in components:
+            writer.writerow([comp])
+
+    # Edges CSV: source, target, relation
+    with open(edges_path, "w", newline="", encoding="utf-8") as f:
+        writer = csv.writer(f)
+        writer.writerow(["source", "target", "relation"])
+        for e in edges:
+            writer.writerow([e["source"], e["target"], e["relation"]])
 
 
 if __name__ == "__main__":
-    # Change this to your actual filename
-    input_path = "payment_gateway_system.txt"
+    input_path = "rideshare_backend.txt"
 
-    system_json = parse_system_doc(input_path)
+    components, edges = parse_system_doc(input_path)
+    write_csvs(components, edges,
+               components_path="componentsRideshareBackend.csv",
+               edges_path="edgesRideshareBackend.csv")
 
-    # Pretty-print to stdout
-    print(json.dumps(system_json, indent=2, ensure_ascii=False))
+    print("Wrote components.csv and edges.csv")

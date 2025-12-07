@@ -1,0 +1,53 @@
+System: Food Ordering Backend 01
+
+Components:
+- Route 53
+- CloudFront (web)
+- AWS WAF
+- ALB (web)
+- ECS Service (orders)
+- RDS (orders DB)
+- ElastiCache (menu cache)
+- S3 (restaurant images)
+- SQS (order events)
+- SNS (courier notifications)
+- Lambda (order worker)
+- Cognito (users)
+- CloudWatch
+- IAM
+- VPC (main)
+
+Edges:
+- Route 53 -> CloudFront (web) [unidirectional]
+- CloudFront (web) -> AWS WAF [unidirectional]
+- AWS WAF -> ALB (web) [unidirectional]
+- ALB (web) -> ECS Service (orders) [unidirectional]
+
+- ECS Service (orders) -> RDS (orders DB) [unidirectional]
+- ECS Service (orders) -> ElastiCache (menu cache) [unidirectional]
+- ECS Service (orders) -> S3 (restaurant images) [unidirectional]
+- ECS Service (orders) -> SQS (order events) [unidirectional]
+- ECS Service (orders) -> Cognito (users) [unidirectional]
+
+- SQS (order events) -> Lambda (order worker) [unidirectional]
+- Lambda (order worker) -> RDS (orders DB) [unidirectional]
+- Lambda (order worker) -> SNS (courier notifications) [unidirectional]
+
+- CloudFront (web) -> CloudWatch [unidirectional]
+- ALB (web) -> CloudWatch [unidirectional]
+- ECS Service (orders) -> CloudWatch [unidirectional]
+- Lambda (order worker) -> CloudWatch [unidirectional]
+
+- ECS Service (orders) -> IAM [unidirectional]
+- Lambda (order worker) -> IAM [unidirectional]
+- ALB (web) -> IAM [unidirectional]
+
+- ECS Service (orders) -> VPC (main) [unidirectional]
+- RDS (orders DB) -> VPC (main) [unidirectional]
+- ElastiCache (menu cache) -> VPC (main) [unidirectional]
+- Lambda (order worker) -> VPC (main) [unidirectional]
+
+# A few realistic bidirectional edges
+- ECS Service (orders) <-> RDS (orders DB) [bidirectional]
+- ECS Service (orders) <-> ElastiCache (menu cache) [bidirectional]
+- CloudWatch <-> ECS Service (orders) [bidirectional]

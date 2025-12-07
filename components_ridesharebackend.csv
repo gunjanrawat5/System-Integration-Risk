@@ -1,0 +1,14 @@
+name
+API Gateway (mobile)
+Lambda (trip management)
+Lambda (pricing)
+DynamoDB (trips)
+RDS (billing)
+ElastiCache (surge cache)
+Kinesis (event stream)
+SQS (trip updates)
+SNS (driver alerts)
+S3 (logs)
+CloudWatch
+IAM
+VPC (main)

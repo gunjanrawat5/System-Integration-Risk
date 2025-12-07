@@ -1,0 +1,16 @@
+name
+Route 53
+CloudFront (web)
+AWS WAF
+API Gateway (public)
+Lambda (payments)
+Lambda (settlement)
+DynamoDB (transactions)
+RDS (reporting)
+SQS (settlement queue)
+SNS (fraud alerts)
+KMS (keys)
+CloudWatch
+IAM
+S3 (logs)
+VPC (main)

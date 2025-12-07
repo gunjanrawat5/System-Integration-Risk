@@ -1,0 +1,135 @@
+source,target,relation,system_id
+Route 53,CloudFront (web),unidirectional,payment_gateway_01
+CloudFront (web),AWS WAF,unidirectional,payment_gateway_01
+AWS WAF,API Gateway (public),unidirectional,payment_gateway_01
+API Gateway (public),Lambda (payments),unidirectional,payment_gateway_01
+API Gateway (public),IAM,unidirectional,payment_gateway_01
+IAM,API Gateway (public),unidirectional,payment_gateway_01
+Lambda (payments),DynamoDB (transactions),unidirectional,payment_gateway_01
+Lambda (payments),SQS (settlement queue),unidirectional,payment_gateway_01
+Lambda (payments),SNS (fraud alerts),unidirectional,payment_gateway_01
+Lambda (payments),KMS (keys),unidirectional,payment_gateway_01
+KMS (keys),Lambda (payments),unidirectional,payment_gateway_01
+SQS (settlement queue),Lambda (settlement),unidirectional,payment_gateway_01
+Lambda (settlement),RDS (reporting),unidirectional,payment_gateway_01
+Lambda (settlement),KMS (keys),unidirectional,payment_gateway_01
+Lambda (settlement),VPC (main),unidirectional,payment_gateway_01
+VPC (main),Lambda (settlement),unidirectional,payment_gateway_01
+CloudFront (web),S3 (logs),unidirectional,payment_gateway_01
+API Gateway (public),S3 (logs),unidirectional,payment_gateway_01
+AWS WAF,S3 (logs),unidirectional,payment_gateway_01
+Lambda (payments),CloudWatch,unidirectional,payment_gateway_01
+Lambda (settlement),CloudWatch,unidirectional,payment_gateway_01
+API Gateway (public),CloudWatch,unidirectional,payment_gateway_01
+CloudFront (web),CloudWatch,unidirectional,payment_gateway_01
+CloudWatch,Lambda (payments),unidirectional,payment_gateway_01
+Lambda (payments),CloudWatch,unidirectional,payment_gateway_01
+Lambda (payments),IAM,unidirectional,payment_gateway_01
+Lambda (settlement),IAM,unidirectional,payment_gateway_01
+API Gateway (public),IAM,unidirectional,payment_gateway_01
+Lambda (payments),VPC (main),unidirectional,payment_gateway_01
+Lambda (settlement),VPC (main),unidirectional,payment_gateway_01
+RDS (reporting),VPC (main),unidirectional,payment_gateway_01
+Route 53,CloudFront (web),unidirectional,food_ordering_01
+CloudFront (web),AWS WAF,unidirectional,food_ordering_01
+AWS WAF,ALB (web),unidirectional,food_ordering_01
+ALB (web),ECS Service (orders),unidirectional,food_ordering_01
+ECS Service (orders),RDS (orders DB),unidirectional,food_ordering_01
+ECS Service (orders),ElastiCache (menu cache),unidirectional,food_ordering_01
+ECS Service (orders),S3 (restaurant images),unidirectional,food_ordering_01
+ECS Service (orders),SQS (order events),unidirectional,food_ordering_01
+ECS Service (orders),Cognito (users),unidirectional,food_ordering_01
+SQS (order events),Lambda (order worker),unidirectional,food_ordering_01
+Lambda (order worker),RDS (orders DB),unidirectional,food_ordering_01
+Lambda (order worker),SNS (courier notifications),unidirectional,food_ordering_01
+CloudFront (web),CloudWatch,unidirectional,food_ordering_01
+ALB (web),CloudWatch,unidirectional,food_ordering_01
+ECS Service (orders),CloudWatch,unidirectional,food_ordering_01
+Lambda (order worker),CloudWatch,unidirectional,food_ordering_01
+ECS Service (orders),IAM,unidirectional,food_ordering_01
+Lambda (order worker),IAM,unidirectional,food_ordering_01
+ALB (web),IAM,unidirectional,food_ordering_01
+ECS Service (orders),VPC (main),unidirectional,food_ordering_01
+RDS (orders DB),VPC (main),unidirectional,food_ordering_01
+ElastiCache (menu cache),VPC (main),unidirectional,food_ordering_01
+Lambda (order worker),VPC (main),unidirectional,food_ordering_01
+ECS Service (orders),RDS (orders DB),unidirectional,food_ordering_01
+RDS (orders DB),ECS Service (orders),unidirectional,food_ordering_01
+ECS Service (orders),ElastiCache (menu cache),unidirectional,food_ordering_01
+ElastiCache (menu cache),ECS Service (orders),unidirectional,food_ordering_01
+CloudWatch,ECS Service (orders),unidirectional,food_ordering_01
+ECS Service (orders),CloudWatch,unidirectional,food_ordering_01
+API Gateway (mobile),Lambda (trip management),unidirectional,rideshare_backend_01
+API Gateway (mobile),Lambda (pricing),unidirectional,rideshare_backend_01
+Lambda (trip management),DynamoDB (trips),unidirectional,rideshare_backend_01
+Lambda (trip management),SQS (trip updates),unidirectional,rideshare_backend_01
+Lambda (trip management),Kinesis (event stream),unidirectional,rideshare_backend_01
+Lambda (pricing),ElastiCache (surge cache),unidirectional,rideshare_backend_01
+Lambda (pricing),DynamoDB (trips),unidirectional,rideshare_backend_01
+SQS (trip updates),Lambda (trip management),unidirectional,rideshare_backend_01
+Kinesis (event stream),Lambda (trip management),unidirectional,rideshare_backend_01
+Lambda (trip management),SNS (driver alerts),unidirectional,rideshare_backend_01
+Lambda (trip management),RDS (billing),unidirectional,rideshare_backend_01
+Lambda (trip management),CloudWatch,unidirectional,rideshare_backend_01
+Lambda (pricing),CloudWatch,unidirectional,rideshare_backend_01
+API Gateway (mobile),CloudWatch,unidirectional,rideshare_backend_01
+Kinesis (event stream),CloudWatch,unidirectional,rideshare_backend_01
+Lambda (trip management),S3 (logs),unidirectional,rideshare_backend_01
+API Gateway (mobile),S3 (logs),unidirectional,rideshare_backend_01
+Lambda (trip management),IAM,unidirectional,rideshare_backend_01
+Lambda (pricing),IAM,unidirectional,rideshare_backend_01
+API Gateway (mobile),IAM,unidirectional,rideshare_backend_01
+Lambda (trip management),VPC (main),unidirectional,rideshare_backend_01
+Lambda (pricing),VPC (main),unidirectional,rideshare_backend_01
+RDS (billing),VPC (main),unidirectional,rideshare_backend_01
+Lambda (trip management),DynamoDB (trips),unidirectional,rideshare_backend_01
+DynamoDB (trips),Lambda (trip management),unidirectional,rideshare_backend_01
+Lambda (trip management),RDS (billing),unidirectional,rideshare_backend_01
+RDS (billing),Lambda (trip management),unidirectional,rideshare_backend_01
+CloudWatch,Lambda (trip management),unidirectional,rideshare_backend_01
+Lambda (trip management),CloudWatch,unidirectional,rideshare_backend_01
+API Gateway (notifications admin),Lambda (notification dispatcher),unidirectional,notification_service_01
+Lambda (notification dispatcher),SNS (notifications topic),unidirectional,notification_service_01
+Lambda (notification dispatcher),SQS (email queue),unidirectional,notification_service_01
+Lambda (notification dispatcher),DynamoDB (user preferences),unidirectional,notification_service_01
+Lambda (notification dispatcher),S3 (templates),unidirectional,notification_service_01
+SQS (email queue),Lambda (notification dispatcher),unidirectional,notification_service_01
+SNS (notifications topic),Lambda (notification dispatcher),unidirectional,notification_service_01
+Lambda (notification dispatcher),SES (email service),unidirectional,notification_service_01
+Lambda (notification dispatcher),CloudWatch,unidirectional,notification_service_01
+API Gateway (notifications admin),CloudWatch,unidirectional,notification_service_01
+Lambda (notification dispatcher),IAM,unidirectional,notification_service_01
+API Gateway (notifications admin),IAM,unidirectional,notification_service_01
+Lambda (notification dispatcher),VPC (main),unidirectional,notification_service_01
+SES (email service),VPC (main),unidirectional,notification_service_01
+Lambda (notification dispatcher),DynamoDB (user preferences),unidirectional,notification_service_01
+DynamoDB (user preferences),Lambda (notification dispatcher),unidirectional,notification_service_01
+Lambda (notification dispatcher),S3 (templates),unidirectional,notification_service_01
+S3 (templates),Lambda (notification dispatcher),unidirectional,notification_service_01
+CloudWatch,Lambda (notification dispatcher),unidirectional,notification_service_01
+Lambda (notification dispatcher),CloudWatch,unidirectional,notification_service_01
+Kinesis (raw events),Lambda (transform),unidirectional,analytics_pipeline_01
+Lambda (transform),S3 (raw data lake),unidirectional,analytics_pipeline_01
+Lambda (transform),S3 (curated data),unidirectional,analytics_pipeline_01
+Lambda (transform),Redshift (warehouse),unidirectional,analytics_pipeline_01
+S3 (raw data lake),Glue Data Catalog,unidirectional,analytics_pipeline_01
+S3 (curated data),Glue Data Catalog,unidirectional,analytics_pipeline_01
+Glue Data Catalog,Athena (ad hoc queries),unidirectional,analytics_pipeline_01
+Glue Data Catalog,Redshift (warehouse),unidirectional,analytics_pipeline_01
+Redshift (warehouse),QuickSight (dashboards),unidirectional,analytics_pipeline_01
+Athena (ad hoc queries),QuickSight (dashboards),unidirectional,analytics_pipeline_01
+Kinesis (raw events),CloudWatch,unidirectional,analytics_pipeline_01
+Lambda (transform),CloudWatch,unidirectional,analytics_pipeline_01
+Redshift (warehouse),CloudWatch,unidirectional,analytics_pipeline_01
+Lambda (transform),IAM,unidirectional,analytics_pipeline_01
+Redshift (warehouse),IAM,unidirectional,analytics_pipeline_01
+Athena (ad hoc queries),IAM,unidirectional,analytics_pipeline_01
+Lambda (transform),VPC (main),unidirectional,analytics_pipeline_01
+Redshift (warehouse),VPC (main),unidirectional,analytics_pipeline_01
+Athena (ad hoc queries),VPC (main),unidirectional,analytics_pipeline_01
+Lambda (transform),S3 (raw data lake),unidirectional,analytics_pipeline_01
+S3 (raw data lake),Lambda (transform),unidirectional,analytics_pipeline_01
+Lambda (transform),Redshift (warehouse),unidirectional,analytics_pipeline_01
+Redshift (warehouse),Lambda (transform),unidirectional,analytics_pipeline_01
+CloudWatch,Lambda (transform),unidirectional,analytics_pipeline_01
+Lambda (transform),CloudWatch,unidirectional,analytics_pipeline_01
