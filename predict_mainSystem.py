@@ -3,10 +3,10 @@ import torch.nn as nn
 import torch.nn.functional as F
 import pandas as pd
 
-from pyGraphs import load_system_graphs   # same module you used in trainGNN.py
+from pyGraphs import load_system_graphs   
 
 
-# Same GCN architecture as in trainGNN.py
+
 class RiskGCN(nn.Module):
     def __init__(self, in_dim, hidden_dim=32, num_classes=3):
         super().__init__()
@@ -32,7 +32,7 @@ def main():
     graphs = load_system_graphs()
     print("Available systems:", list(graphs.keys()))
 
-    system_id = "main_system_01"  # <-- whatever you used
+    system_id = "main_system_01"  
     data = graphs[system_id]
 
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
